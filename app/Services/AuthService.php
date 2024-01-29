@@ -3,13 +3,7 @@
 namespace App\Services;
 
 use GuzzleHttp\Client;
-use Illuminate\Auth\Events\PasswordReset;
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
-use Symfony\Component\HttpFoundation\Response;
 
 class AuthService extends BaseService
 {
@@ -36,66 +30,6 @@ class AuthService extends BaseService
         return $this->loginAndReturnToken($user);
     }
 
-    public function login(array $credentials): array
-    {
-        if (! $token = auth()->attempt($credentials)) {
-            return [];
-        }
-
-        $rememberToken = Str::random(32);
-
-        $this->userService->update(auth()->id(), [
-            'remember_token' => $rememberToken,
-        ]);
-
-        return [
-            'accessToken' => $token,
-            'refreshToken' => $rememberToken,
-        ];
-    }
-
-    public function forgotPassword(string $email): string
-    {
-        return Password::sendResetLink(
-            ['email' => $email]
-        );
-    }
-
-    public function resetPassword(array $credentials): string
-    {
-        return Password::reset(
-            $credentials,
-            function ($user) use ($credentials) {
-                $user->forceFill([
-                    'password' => Hash::make($credentials['password']),
-                ])->save();
-
-                event(new PasswordReset($user));
-            }
-        );
-    }
-
-    public function changePassword($user, string $newPassword): void
-    {
-        $user->forceFill([
-            'password' => Hash::make($newPassword),
-        ])->save();
-    }
-
-    public function verifyEmail(EmailVerificationRequest $request): void
-    {
-        $this->checkIfEmailVerified($request);
-
-        $request->fulfill();
-    }
-
-    public function resendVerificationEmail(Request $request): void
-    {
-        $this->checkIfEmailVerified($request);
-
-        $request->user()->sendEmailVerificationNotification();
-    }
-
     public function refreshToken(string $refreshToken): array
     {
         $user = $this->userService->findByRememberToken($refreshToken);
@@ -115,15 +49,6 @@ class AuthService extends BaseService
             'accessToken' => auth()->tokenById($user->id),
             'refreshToken' => $rememberToken,
         ];
-    }
-
-    private function checkIfEmailVerified(Request $request): void
-    {
-        if ($request->user()->hasVerifiedEmail()) {
-            response()->json([
-                'message' => __('Email already verified'),
-            ], Response::HTTP_NO_CONTENT);
-        }
     }
 
     private function getUserInfoFromGoogle(string $accessToken)

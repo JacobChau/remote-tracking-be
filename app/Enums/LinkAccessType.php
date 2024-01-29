@@ -6,9 +6,9 @@ namespace App\Enums;
 
 use BenSampo\Enum\Enum;
 
-final class UserRole extends Enum
+final class LinkAccessType extends Enum
 {
-    const STAFF = 0;
+    const PUBLIC = 0;
 
-    const ADMIN = 1;
+    const PRIVATE = 1;
 }
