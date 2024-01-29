@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->smallInteger('role')->default(UserRole::Staff);
+            $table->smallInteger('role')->default(UserRole::STAFF);
             $table->rememberToken();
             $table->string('avatar')->nullable();
             $table->date('birthdate')->nullable();

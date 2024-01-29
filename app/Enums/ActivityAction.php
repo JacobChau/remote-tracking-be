@@ -8,15 +8,10 @@ use BenSampo\Enum\Enum;
 
 final class ActivityAction extends Enum
 {
-    const JoinMeeting = 0;
-
-    const LeaveMeeting = 1;
-
-    const TurnOnCamera = 2;
-
-    const TurnOffCamera = 3;
-
-    const TurnOnScreen = 4;
-
-    const TurnOffScreen = 5;
+    const JOIN_MEETING = 0;
+    const LEAVE_MEETING = 1;
+    const TURN_ON_CAMERA = 2;
+    const TURN_OFF_CAMERA = 3;
+    const TURN_ON_SCREEN = 4;
+    const TURN_OFF_SCREEN = 5;
 }

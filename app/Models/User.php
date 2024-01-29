@@ -75,7 +75,7 @@ class User extends Authenticatable implements JWTSubject, MustVerifyEmail
 
     public function isAdmin(): bool
     {
-        return $this->hasAnyRole([UserRole::Admin]);
+        return $this->hasAnyRole([UserRole::ADMIN]);
     }
 
     public function isTeacher(): bool

@@ -45,7 +45,7 @@ class UserService extends BaseService
     {
         // where role is not admin and where user is not in group and not current user
         $query = $this->model->query()
-            ->where('role', '!=', UserRole::Admin)
+            ->where('role', '!=', UserRole::ADMIN)
             ->where('id', '!=', auth()->id())
             ->whereDoesntHave('groups', function ($q) use ($id) {
                 $q->where('group_id', $id);

@@ -8,7 +8,7 @@ use BenSampo\Enum\Enum;
 
 final class UserRole extends Enum
 {
-    const Staff = 0;
+    const STAFF = 0;
 
-    const Admin = 1;
+    const ADMIN = 1;
 }
