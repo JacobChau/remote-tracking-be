@@ -6,11 +6,9 @@ namespace App\Enums;
 
 use BenSampo\Enum\Enum;
 
-final class PaginationSetting extends Enum
+final class UserRole extends Enum
 {
-    const PER_PAGE = 10;
+    const Staff = 0;
 
-    const ORDER_BY = 'id';
-
-    const ORDER_DIRECTION = 'asc';
+    const Admin = 1;
 }

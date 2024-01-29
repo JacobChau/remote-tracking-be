@@ -1,7 +1,7 @@
 <!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
 <a name="readme-top"></a>
 
-# Owl Test
+# Remote Tracking
 
 [![GitHub contributors][contributors-shield]][contributors-url]
 [![GitHub forks][forks-shield]][forks-url]
@@ -15,7 +15,7 @@
     <img src="./public/logo.svg" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">Owl Test</h3>
+<h3 align="center">Remote Tracking</h3>
 
   <p align="center">
     A simple backend for testing purposes
