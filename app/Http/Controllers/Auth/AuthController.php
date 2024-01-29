@@ -4,13 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginGoogleRequest;
-use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RefreshTokenRequest;
-use App\Http\Requests\StoreUserRequest;
-use App\Http\Resources\UserResource;
 use App\Services\AuthService;
 use App\Services\UserService;
-use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -24,42 +20,6 @@ class AuthController extends Controller
     {
         $this->userService = $userService;
         $this->authService = $authService;
-    }
-
-    /**
-     * Register user
-     */
-    public function register(StoreUserRequest $request): JsonResponse
-    {
-        $user = $this->userService->create($request->validated());
-
-        event(new Registered($user));
-
-        return $this->sendResponse(
-            null,
-            'User registered successfully',
-            Response::HTTP_CREATED
-        );
-    }
-
-    /**
-     * Login user
-     */
-    public function login(LoginRequest $request): JsonResponse
-    {
-        $response = $this->authService->login($request->validated());
-
-        if (! $response) {
-            return response()->json([
-                'message' => 'Invalid credentials',
-            ], Response::HTTP_UNAUTHORIZED);
-        }
-
-        return $this->sendResponse([
-            'user' => new UserResource(auth()->user()),
-            'accessToken' => $response['accessToken'],
-            'refreshToken' => $response['refreshToken'],
-        ], 'User logged in successfully');
     }
 
     /**
