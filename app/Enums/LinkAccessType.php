@@ -9,5 +9,6 @@ use BenSampo\Enum\Enum;
 final class LinkAccessType extends Enum
 {
     const Public = 0;
+
     const Private = 1;
 }
