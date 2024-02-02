@@ -23,7 +23,6 @@ class AuthService extends BaseService
         ], [
             'avatar' => $results->picture,
             'name' => $results->family_name.' '.$results->given_name,
-            'email_verified_at' => now(),
         ]
         );
 

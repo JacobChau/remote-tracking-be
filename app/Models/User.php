@@ -78,10 +78,6 @@ class User extends Authenticatable implements JWTSubject, MustVerifyEmail
         return $this->hasAnyRole([UserRole::ADMIN]);
     }
 
-    public function isTeacher(): bool
-    {
-        return $this->hasAnyRole([UserRole::Teacher]);
-    }
 
     /**
      * Send the queued email verification notification.
@@ -102,30 +98,11 @@ class User extends Authenticatable implements JWTSubject, MustVerifyEmail
     }
 
     // ------------------ Relationships ------------------
-    public function groups(): BelongsToMany
+    public function meetings(): BelongsToMany
     {
-        return $this->belongsToMany(Group::class, 'user_groups')->withTimestamps();
+        return $this->belongsToMany(Meeting::class, 'user_meetings')->withTimestamps();
     }
 
-    public function assessmentAttempts(): HasMany
-    {
-        return $this->hasMany(AssessmentAttempt::class);
-    }
-
-    public function ownedGroups(): HasMany
-    {
-        return $this->hasMany(Group::class, 'created_by');
-    }
-
-    public function ownedAssessments(): HasMany
-    {
-        return $this->hasMany(Assessment::class, 'created_by');
-    }
-
-    public function ownedQuestions(): HasMany
-    {
-        return $this->hasMany(Question::class, 'created_by');
-    }
 
     // ------------------ Scopes ------------------
     public function scopeEmail($query, string $email)
