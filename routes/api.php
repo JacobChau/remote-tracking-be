@@ -68,7 +68,9 @@ Route::middleware(['api', 'auth'])->group(function () {
     // MEETING ROUTES
     Route::prefix('meetings')->name('meetings.')->controller(MeetingController::class)->group(function () {
         Route::get('/', 'index')->name('index');
-        Route::post('/{meeting}/join', 'join')->name('join');
+        Route::get('/{meeting}', 'show')->name('show');
+        Route::get('/{meeting}/join/{hash}', 'join')->name('join');
+//        Route::post('/{meeting}/join', 'join')->name('join');
         Route::post('/{meeting}/leave', 'leave')->name('leave');
     });
 

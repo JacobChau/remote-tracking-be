@@ -46,4 +46,9 @@ class Meeting extends Model
     {
         return $this->belongsToMany(User::class, 'user_meetings')->withTimestamps();
     }
+
+    public function linkSetting(): HasMany
+    {
+        return $this->hasMany(LinkSetting::class);
+    }
 }

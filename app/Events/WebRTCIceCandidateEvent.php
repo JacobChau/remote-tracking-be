@@ -13,11 +13,13 @@ class WebRTCIceCandidateEvent implements ShouldBroadcast
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public string $meetingId;
-    public string $candidate;
+    public string $staffId;
+    public array $candidate;
 
-    public function __construct($meetingId, $candidate)
+    public function __construct($meetingId, $staffId, $candidate)
     {
         $this->meetingId = $meetingId;
+        $this->staffId = $staffId;
         $this->candidate = $candidate;
     }
 

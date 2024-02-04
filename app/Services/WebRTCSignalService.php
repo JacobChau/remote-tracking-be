@@ -23,27 +23,33 @@ class WebRTCSignalService extends BaseService
         event(new WebRTCSignalEvent($connectionId, $signal));
     }
 
-    public function sendOffer(string $meetingId, array $offer): void
+    public function sendOffer(string $meetingId, string $staffId, array $offer): void
     {
         $meeting = $this->meetingService->findOneOrFail(['id' => $meetingId]);
-        $meeting->offer = $offer;
+        $meeting->offer = ['staffId' => $staffId, 'sdp' => $offer];
         $meeting->save();
 
-        broadcast(new WebRTCOfferEvent($meetingId, $offer))->toOthers();
+        broadcast(new WebRTCOfferEvent($meetingId, $staffId, $offer))->toOthers();
     }
 
-    public function sendAnswer(string $meetingId, array $answer): void
+    public function sendAnswer(string $meetingId, string $staffId, array $answer): void
     {
         $meeting = $this->meetingService->findOneOrFail(['id' => $meetingId]);
-        $meeting->answer = $answer;
+        $meeting->answer = ['staffId' => $staffId, 'sdp' => $answer];
         $meeting->save();
 
-        broadcast(new WebRTCAnswerEvent($meetingId, $answer))->toOthers();
+        broadcast(new WebRTCAnswerEvent($meetingId, $staffId, $answer))->toOthers();
     }
 
-    public function sendIceCandidate(string $meetingId, array $iceCandidate): void
+    public function sendIceCandidate(string $meetingId, string $staffId, array $iceCandidate): void
     {
-        broadcast(new WebRTCIceCandidateEvent($meetingId, $iceCandidate))->toOthers();
+        $meeting = $this->meetingService->findOneOrFail(['id' => $meetingId]);
+        $candidates = $meeting->ice_candidates ?? [];
+        $candidates[] = ['staffId' => $staffId, 'candidate' => $iceCandidate];
+        $meeting->ice_candidates = $candidates;
+        $meeting->save();
+
+        broadcast(new WebRTCIceCandidateEvent($meetingId, $staffId, $iceCandidate))->toOthers();
     }
 
 }

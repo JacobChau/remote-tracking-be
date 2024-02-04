@@ -13,11 +13,13 @@ class WebRTCAnswerEvent implements ShouldBroadcast
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public string $meetingId;
-    public string $answer;
+    public string $staffId;
+    public array $answer;
 
-    public function __construct($meetingId, $answer)
+    public function __construct($meetingId, $staffId, $answer)
     {
         $this->meetingId = $meetingId;
+        $this->staffId = $staffId;
         $this->answer = $answer;
     }
 

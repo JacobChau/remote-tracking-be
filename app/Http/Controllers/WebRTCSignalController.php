@@ -2,12 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\WebRTCAnswerEvent;
-use App\Events\WebRTCIceCandidateEvent;
-use App\Events\WebRTCOfferEvent;
-use App\Events\WebRTCSignalEvent;
-use App\Models\Meeting;
-use App\Services\MeetingService;
+
 use App\Services\WebRTCSignalService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -29,21 +24,24 @@ class WebRTCSignalController extends Controller
 
     public function sendOffer(Request $request, string $meetingId): JsonResponse
     {
-        $this->webRTCSignalingService->sendOffer($meetingId, $request->offer);
+        $staffId = $request->user()->id;
+        $this->webRTCSignalingService->sendOffer($meetingId, $staffId,  $request->offer);
 
         return response()->json(['status' => 'offer_sent']);
     }
 
     public function sendAnswer(Request $request, string $meetingId): JsonResponse
     {
-        $this->webRTCSignalingService->sendAnswer($meetingId, $request->answer);
+        $staffId = $request->user()->id;
+        $this->webRTCSignalingService->sendAnswer($meetingId, $staffId, $request->answer);
 
         return response()->json(['status' => 'answer_sent']);
     }
 
     public function sendIceCandidate(Request $request, string $meetingId): JsonResponse
     {
-        $this->webRTCSignalingService->sendIceCandidate($meetingId, $request->iceCandidate);
+        $staffId = $request->user()->id;
+        $this->webRTCSignalingService->sendIceCandidate($meetingId, $staffId, $request->iceCandidate);
 
         return response()->json(['status' => 'ice_candidate_sent']);
     }

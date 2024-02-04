@@ -13,11 +13,13 @@ class WebRTCOfferEvent implements ShouldBroadcast
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public string $meetingId;
-    public $offer;
+    public string $staffId;
+    public array $offer;
 
-    public function __construct($meetingId, $offer)
+    public function __construct($meetingId, $staffId, $offer)
     {
         $this->meetingId = $meetingId;
+        $this->staffId = $staffId;
         $this->offer = $offer;
     }
 
