@@ -47,6 +47,23 @@ class BaseService
         return $query->find($id);
     }
 
+    public function findOneOrFail(array $conditions, array $defaultRelations = []): object
+    {
+        $relations = $defaultRelations;
+
+        if (request()->has('include')) {
+            $includeRelations = explode(',', request()->get('include'));
+            $relations = array_unique(array_merge($defaultRelations, $includeRelations));
+        }
+
+        $query = $this->model->query();
+        foreach ($relations as $relation) {
+            $query->with($relation);
+        }
+
+        return $query->where($conditions)->firstOrFail();
+    }
+
     public function firstOrCreate(array $conditions, array $data = []): object
     {
         return $this->model->firstOrCreate($conditions, $data);

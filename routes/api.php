@@ -2,8 +2,10 @@
 
 use App\Enums\UserRole;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\MeetingController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WebRTCSignalController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,6 +41,13 @@ Route::middleware(['api', 'role:'.UserRole::ADMIN])->group(function () {
     Route::prefix('upload')->name('upload.')->controller(UploadController::class)->group(function () {
         Route::post('/', 'upload')->name('upload');
     });
+
+    // MEETING ROUTES
+    Route::prefix('meetings')->name('meetings.')->controller(MeetingController::class)->group(function () {
+        Route::post('/', 'store')->name('store');
+        Route::put('/{meeting}', 'update')->name('update');
+        Route::delete('/{meeting}', 'destroy')->name('destroy');
+    });
 });
 
 Route::middleware(['api', 'auth'])->group(function () {
@@ -54,5 +63,22 @@ Route::middleware(['api', 'auth'])->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/me', 'me')->name('me');
         Route::get('/{user}', 'show')->name('show');
+    });
+
+    // MEETING ROUTES
+    Route::prefix('meetings')->name('meetings.')->controller(MeetingController::class)->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/{meeting}', 'show')->name('show');
+        Route::get('/{meeting}/join/{hash}', 'join')->name('join');
+//        Route::post('/{meeting}/join', 'join')->name('join');
+        Route::post('/{meeting}/leave', 'leave')->name('leave');
+    });
+
+    // WEBRTC ROUTES
+    Route::prefix('meetings')->name('webrtc.')->controller(WebRTCSignalController::class)->group(function () {
+        Route::post('/{meetingId}/offer', 'sendOffer')->name('offer');
+        Route::post('/{meetingId}/answer', 'sendAnswer')->name('answer');
+        Route::post('/{meetingId}/icecandidate', 'sendIceCandidate')->name('icecandidate');
+        Route::post('/{meetingId}/signal', 'sendSignal')->name('signal');
     });
 });
