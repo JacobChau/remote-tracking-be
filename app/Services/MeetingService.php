@@ -29,8 +29,12 @@ class MeetingService extends BaseService
             return response()->json(['status' => 'link_disabled'], 403);
         }
 
-        if ($linkSetting->start_date > now() || $linkSetting->end_date < now()) {
+        if ($linkSetting->end_date && $linkSetting->end_date < now()) {
             return response()->json(['status' => 'link_expired'], 403);
+        }
+
+        if ($linkSetting->start_date > now()) {
+            return response()->json(['status' => 'link_not_started'], 403);
         }
 
         if ($linkSetting->access_type === LinkAccessType::PRIVATE) {
