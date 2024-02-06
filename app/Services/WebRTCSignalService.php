@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services;
 
+use App\Enums\UserRole;
 use App\Events\WebRTCAnswerEvent;
 use App\Events\WebRTCIceCandidateEvent;
 use App\Events\WebRTCOfferEvent;
@@ -18,10 +19,12 @@ class WebRTCSignalService extends BaseService
         $this->meetingService = $meetingService;
     }
 
-    public function sendSignal(string $connectionId, array $signal): void
+    public function sendSignal($meetingId, $signal, $staffId = null): void
     {
-        event(new WebRTCSignalEvent($connectionId, $signal));
+        $toAdmin = auth()->user()->role !== UserRole::ADMIN;
+        event(new WebRTCSignalEvent($signal, $meetingId, $toAdmin, $staffId));
     }
+
 
     public function sendOffer(string $meetingId, string $staffId, array $offer): void
     {
