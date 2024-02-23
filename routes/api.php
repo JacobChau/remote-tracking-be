@@ -1,6 +1,7 @@
 <?php
 
 use App\Enums\UserRole;
+use App\Http\Controllers\AgoraTokenController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\MeetingController;
 use App\Http\Controllers\UploadController;
@@ -25,6 +26,12 @@ Route::middleware('api')->group(function () {
         Route::controller(AuthController::class)->group(function () {
             Route::post('/google', 'loginWithGoogle')->name('google');
             Route::post('/refresh', 'refresh')->name('refresh');
+        });
+    });
+
+    Route::prefix('agora')->name('agora.')->group(function () {
+        Route::controller(AgoraTokenController::class)->group(function () {
+            Route::post('/token', 'generateToken')->name('token');
         });
     });
 });
@@ -81,4 +88,6 @@ Route::middleware(['api', 'auth'])->group(function () {
         Route::post('/{meetingId}/icecandidate', 'sendIceCandidate')->name('icecandidate');
         Route::post('/{meetingId}/signal', 'sendSignal')->name('signal');
     });
+
 });
+
