@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\LinkAccessType;
 use App\Events\MeetingEvent;
 use App\Http\Requests\StoreMeetingRequest;
 use App\Http\Resources\MeetingResource;
-use App\Services\LinkAccessService;
-use App\Services\LinkService;
 use App\Services\MeetingService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Str;
@@ -16,6 +13,7 @@ use ReflectionException;
 class MeetingController extends Controller
 {
     protected MeetingService $meetingService;
+
     public function __construct(MeetingService $meetingService)
     {
         $this->meetingService = $meetingService;
@@ -27,6 +25,7 @@ class MeetingController extends Controller
     public function index(): JsonResponse
     {
         $meetings = $this->meetingService->getList(MeetingResource::class, request()->all());
+
         return response()->json($meetings);
     }
 
@@ -47,6 +46,7 @@ class MeetingController extends Controller
     public function show(string $meetingId): JsonResponse
     {
         $meeting = $this->meetingService->findOneOrFail(['id' => $meetingId]);
+
         return response()->json(new MeetingResource($meeting));
     }
 

@@ -8,7 +8,6 @@ use App\Notifications\VerifyEmailQueued;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
@@ -78,7 +77,6 @@ class User extends Authenticatable implements JWTSubject, MustVerifyEmail
         return $this->hasAnyRole([UserRole::ADMIN]);
     }
 
-
     /**
      * Send the queued email verification notification.
      */
@@ -102,7 +100,6 @@ class User extends Authenticatable implements JWTSubject, MustVerifyEmail
     {
         return $this->belongsToMany(Meeting::class, 'user_meetings')->withTimestamps();
     }
-
 
     // ------------------ Scopes ------------------
     public function scopeEmail($query, string $email)

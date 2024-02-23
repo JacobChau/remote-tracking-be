@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Lib\Agora\RtcTokenBuilder;
-use Illuminate\Support\Facades\Response;
+use Illuminate\Http\Request;
 
 class AgoraTokenController extends Controller
 {

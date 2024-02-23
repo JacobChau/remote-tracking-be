@@ -3,17 +3,19 @@
 namespace App\Events;
 
 use Illuminate\Broadcasting\Channel;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Foundation\Events\Dispatchable;
+use Illuminate\Queue\SerializesModels;
 
 class MeetingEvent implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public $meetingId;
+
     public $staffId;
+
     public $action;
 
     public function __construct($meetingId, $staffId, $action)
@@ -28,4 +30,3 @@ class MeetingEvent implements ShouldBroadcast
         return new Channel('meeting.'.$this->meetingId);
     }
 }
-

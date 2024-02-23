@@ -2,23 +2,17 @@
 
 namespace App\Models;
 
-use App\Enums\UserRole;
-use App\Notifications\ResetPasswordQueued;
-use App\Notifications\VerifyEmailQueued;
 use App\Traits\HasCreatedBy;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Tymon\JWTAuth\Contracts\JWTSubject;
 
 class Meeting extends Model
 {
-    use HasFactory, Notifiable, HasCreatedBy, SoftDeletes;
+    use HasCreatedBy, HasFactory, Notifiable, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -33,7 +27,7 @@ class Meeting extends Model
     /**
      * The attributes that should be cast.
      *
- * @var array<string, string>
+     * @var array<string, string>
      */
     protected $casts = [
         'start_date' => 'datetime',

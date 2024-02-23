@@ -12,7 +12,9 @@ use Illuminate\Http\JsonResponse;
 class MeetingService extends BaseService
 {
     protected LinkService $linkService;
+
     protected LinkAccessService $linkAccessService;
+
     public function __construct(Meeting $meeting, LinkService $linkService, LinkAccessService $linkAccessService)
     {
         $this->model = $meeting;
@@ -25,7 +27,7 @@ class MeetingService extends BaseService
 
         $linkSetting = $this->linkService->findOneOrFail(['hash' => $hash]);
 
-        if (!$linkSetting->is_enabled) {
+        if (! $linkSetting->is_enabled) {
             return response()->json(['status' => 'link_disabled'], 403);
         }
 
@@ -40,7 +42,7 @@ class MeetingService extends BaseService
         if ($linkSetting->access_type === LinkAccessType::PRIVATE) {
             $staffId = auth()->user()->id;
             $linkAccess = $this->linkAccessService->findOneOrFail(['link_id' => $linkSetting->id, 'user_id' => $staffId]);
-            if (!$linkAccess) {
+            if (! $linkAccess) {
                 return response()->json(['status' => 'access_denied'], 403);
             }
         }

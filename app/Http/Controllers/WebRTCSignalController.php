@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
-use App\Enums\UserRole;
-use App\Events\WebRTCSignalEvent;
 use App\Http\Requests\SendSignalRequest;
 use App\Services\WebRTCSignalService;
 use Illuminate\Http\JsonResponse;
@@ -13,6 +10,7 @@ use Illuminate\Http\Request;
 class WebRTCSignalController extends Controller
 {
     protected WebRTCSignalService $webRTCSignalingService;
+
     public function __construct(WebRTCSignalService $webRTCSignalingService)
     {
         $this->webRTCSignalingService = $webRTCSignalingService;
@@ -26,11 +24,10 @@ class WebRTCSignalController extends Controller
         return response()->json(['status' => 'signal_sent']);
     }
 
-
     public function sendOffer(Request $request, string $meetingId): JsonResponse
     {
         $staffId = $request->user()->id;
-        $this->webRTCSignalingService->sendOffer($meetingId, $staffId,  $request->offer);
+        $this->webRTCSignalingService->sendOffer($meetingId, $staffId, $request->offer);
 
         return response()->json(['status' => 'offer_sent']);
     }

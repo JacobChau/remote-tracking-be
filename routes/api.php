@@ -77,7 +77,7 @@ Route::middleware(['api', 'auth'])->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/{meeting}', 'show')->name('show');
         Route::get('/join/{hash}', 'join')->name('join');
-//        Route::post('/{meeting}/join', 'join')->name('join');
+        //        Route::post('/{meeting}/join', 'join')->name('join');
         Route::post('/{meeting}/leave', 'leave')->name('leave');
     });
 
@@ -90,4 +90,3 @@ Route::middleware(['api', 'auth'])->group(function () {
     });
 
 });
-

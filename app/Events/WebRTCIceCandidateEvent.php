@@ -3,17 +3,19 @@
 namespace App\Events;
 
 use Illuminate\Broadcasting\Channel;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Foundation\Events\Dispatchable;
+use Illuminate\Queue\SerializesModels;
 
 class WebRTCIceCandidateEvent implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public string $meetingId;
+
     public string $staffId;
+
     public array $candidate;
 
     public function __construct($meetingId, $staffId, $candidate)
@@ -25,7 +27,6 @@ class WebRTCIceCandidateEvent implements ShouldBroadcast
 
     public function broadcastOn(): Channel
     {
-        return new Channel('webrtc.' . $this->meetingId);
+        return new Channel('webrtc.'.$this->meetingId);
     }
 }
-
