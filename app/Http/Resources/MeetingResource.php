@@ -3,7 +3,6 @@
 namespace App\Http\Resources;
 
 use App\Enums\UserRole;
-use BenSampo\Enum\Exceptions\InvalidEnumMemberException;
 use Illuminate\Http\Request;
 use TiMacDonald\JsonApi\JsonApiResource;
 

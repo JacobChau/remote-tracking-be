@@ -25,7 +25,6 @@ class WebRTCSignalService extends BaseService
         event(new WebRTCSignalEvent($signal, $meetingId, $toAdmin, $staffId));
     }
 
-
     public function sendOffer(string $meetingId, string $staffId, array $offer): void
     {
         $meeting = $this->meetingService->findOneOrFail(['id' => $meetingId]);
@@ -54,5 +53,4 @@ class WebRTCSignalService extends BaseService
 
         broadcast(new WebRTCIceCandidateEvent($meetingId, $staffId, $iceCandidate))->toOthers();
     }
-
 }

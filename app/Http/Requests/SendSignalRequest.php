@@ -2,8 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\Enums\UserRole;
-use BenSampo\Enum\Rules\Enum;
 use Illuminate\Contracts\Validation\ValidationRule;
 
 class SendSignalRequest extends ApiFormRequest

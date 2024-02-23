@@ -1,6 +1,7 @@
 <?php
 
 use App\Enums\UserRole;
+use App\Http\Controllers\AgoraTokenController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\MeetingController;
 use App\Http\Controllers\UploadController;
@@ -25,6 +26,12 @@ Route::middleware('api')->group(function () {
         Route::controller(AuthController::class)->group(function () {
             Route::post('/google', 'loginWithGoogle')->name('google');
             Route::post('/refresh', 'refresh')->name('refresh');
+        });
+    });
+
+    Route::prefix('agora')->name('agora.')->group(function () {
+        Route::controller(AgoraTokenController::class)->group(function () {
+            Route::post('/token', 'generateToken')->name('token');
         });
     });
 });
@@ -70,7 +77,7 @@ Route::middleware(['api', 'auth'])->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/{meeting}', 'show')->name('show');
         Route::get('/join/{hash}', 'join')->name('join');
-//        Route::post('/{meeting}/join', 'join')->name('join');
+        //        Route::post('/{meeting}/join', 'join')->name('join');
         Route::post('/{meeting}/leave', 'leave')->name('leave');
     });
 
@@ -81,4 +88,5 @@ Route::middleware(['api', 'auth'])->group(function () {
         Route::post('/{meetingId}/icecandidate', 'sendIceCandidate')->name('icecandidate');
         Route::post('/{meetingId}/signal', 'sendSignal')->name('signal');
     });
+
 });
