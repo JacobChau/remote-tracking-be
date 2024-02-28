@@ -1,9 +1,11 @@
 <?php
 
 use App\Enums\UserRole;
+use App\Http\Controllers\ActivityLogController;
 use App\Http\Controllers\AgoraTokenController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\MeetingController;
+use App\Http\Controllers\ScreenshotController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WebRTCSignalController;
@@ -87,6 +89,21 @@ Route::middleware(['api', 'auth'])->group(function () {
         Route::post('/{meetingId}/answer', 'sendAnswer')->name('answer');
         Route::post('/{meetingId}/icecandidate', 'sendIceCandidate')->name('icecandidate');
         Route::post('/{meetingId}/signal', 'sendSignal')->name('signal');
+    });
+
+    // Screenshot routes
+    Route::prefix('screenshots')->name('screenshots.')->controller(ScreenshotController::class)->group(function () {
+        Route::get('/staffs', 'getStaffScreenshot')->name('staffs');
+        Route::get('/meetings', 'getMeetingScreenshot')->name('meetings');
+        Route::get('/staffs/{id}', 'getStaffScreenshotDetail')->name('staffs.show');
+        Route::get('/meetings/{id}', 'getMeetingScreenshotDetail')->name('meetings.show');
+    });
+
+    // Activity Log routes
+    Route::prefix('activity-logs')->name('activity-logs.')->controller(ActivityLogController::class)->group(function () {
+        Route::post('/', 'store')->name('store');
+        Route::get('/staffs/{id}', 'getStaffActivityLog')->name('staffs');
+        Route::get('/{id}', 'show')->name('show');
     });
 
 });
