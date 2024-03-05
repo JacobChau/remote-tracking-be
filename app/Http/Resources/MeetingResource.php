@@ -13,19 +13,15 @@ class MeetingResource extends JsonApiResource
      */
     public function toAttributes(Request $request): array
     {
-        $data = [
+        $link = $this->linkSetting->first();
+        $isAdmin = auth()->user()->role === UserRole::ADMIN;
+
+        return [
             'title' => $this->title,
             'startDate' => $this->start_date,
             'endDate' => $this->end_date,
-            'hash' => $this->hash,
+            'hash' => $link ? $link->hash : null,
+            'createdAt' => $this->when($isAdmin, $this->created_at),
         ];
-
-        if ($request->user()->role === UserRole::ADMIN) {
-            $data['offer'] = $this->offer;
-            $data['answer'] = $this->answer;
-            $data['iceCandidates'] = $this->ice_candidates;
-        }
-
-        return $data;
     }
 }

@@ -5,10 +5,9 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Enums\UserRole;
-use App\Http\Resources\UserActivityLogResource;
-use App\Http\Resources\UserScreenshotDetailResource;
 use App\Http\Resources\UserScreenshotResource;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 
 class UserService extends BaseService
@@ -17,7 +16,6 @@ class UserService extends BaseService
     {
         $this->model = $user;
     }
-
 
     public function findByRememberToken(string $refreshToken): ?User
     {
@@ -33,6 +31,18 @@ class UserService extends BaseService
     {
         $query = $this->model->query();
         $query->role(UserRole::STAFF);
+
         return $this->getList(UserScreenshotResource::class, request()->all(), $query, ['screenshots']);
+    }
+
+    public function getList(?string $resourceClass = null, array $input = [], ?Builder $query = null, array $relations = []): array
+    {
+        $query = $this->model->query();
+        if (isset($input['searchKeyword'])) {
+            $query->where('name', 'like', '%'.$input['searchKeyword'].'%');
+            $query->orWhere('email', 'like', '%'.$input['searchKeyword'].'%');
+        }
+
+        return parent::getList($resourceClass, $input, $query, $relations);
     }
 }

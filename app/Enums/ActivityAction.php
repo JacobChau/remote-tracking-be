@@ -15,10 +15,14 @@ final class ActivityAction extends Enum
     const TURN_ON_CAMERA = 2;
 
     const TURN_OFF_CAMERA = 3;
+
     const TURN_ON_MIC = 4;
+
     const TURN_OFF_MIC = 5;
 
-    const SHARE_SCREEN = 6;
+    const START_SCREEN_SHARING = 6;
 
-    const STOP_SHARE_SCREEN = 7;
+    const STOP_SCREEN_SHARING = 7;
+
+    const NO_FACE_DETECTED = 8;
 }

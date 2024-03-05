@@ -7,7 +7,6 @@ use App\Http\Requests\StoreMeetingRequest;
 use App\Http\Resources\MeetingResource;
 use App\Services\MeetingService;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Str;
 use ReflectionException;
 
 class MeetingController extends Controller
@@ -53,19 +52,15 @@ class MeetingController extends Controller
     public function store(StoreMeetingRequest $request): JsonResponse
     {
         $data = $request->validated();
-        $meeting = $this->meetingService->create([
-            'title' => $data['title'],
-            'start_date' => $data['startDate'],
-            'end_date' => $data['endDate'],
-        ]);
+        $response = $this->meetingService->create($data);
 
-        $meeting->linkSetting()->create([
-            'access_type' => $data['accessType'],
-            'is_enabled' => true,
-            'start_date' => $data['startDate'],
-            'end_date' => $data['endDate'],
-            'hash' => Str::random(32),
-        ]);
+        return response()->json(['hash' => $response->hash]);
+    }
+
+    public function showByHash(string $hash): JsonResponse
+    {
+        // hash is store in the link setting, foreign key to the meeting
+        $meeting = $this->meetingService->showByHash($hash);
 
         return response()->json(new MeetingResource($meeting));
     }
