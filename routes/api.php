@@ -36,6 +36,10 @@ Route::middleware('api')->group(function () {
             Route::post('/token', 'generateToken')->name('token');
         });
     });
+
+    Route::prefix('activity-logs')->name('activity-logs.')->controller(ActivityLogController::class)->group(function () {
+        Route::post('/', 'store')->name('store');
+    });
 });
 
 Route::middleware(['api', 'role:'.UserRole::ADMIN])->group(function () {
@@ -53,9 +57,14 @@ Route::middleware(['api', 'role:'.UserRole::ADMIN])->group(function () {
 
     // MEETING ROUTES
     Route::prefix('meetings')->name('meetings.')->controller(MeetingController::class)->group(function () {
+        Route::get('/hash/{hash}', 'showByHash')->name('showByHash');
         Route::post('/', 'store')->name('store');
         Route::put('/{meeting}', 'update')->name('update');
         Route::delete('/{meeting}', 'destroy')->name('destroy');
+    });
+
+    Route::prefix('activity-logs')->name('activity-logs.')->controller(ActivityLogController::class)->group(function () {
+        Route::get('/staffs/{staffId}/meetings/{meetingId}', 'getStaffMeetingActivityLog')->name('staffs.meetings');
     });
 });
 
@@ -101,7 +110,6 @@ Route::middleware(['api', 'auth'])->group(function () {
 
     // Activity Log routes
     Route::prefix('activity-logs')->name('activity-logs.')->controller(ActivityLogController::class)->group(function () {
-        Route::post('/', 'store')->name('store');
         Route::get('/staffs/{id}', 'getStaffActivityLog')->name('staffs');
         Route::get('/{id}', 'show')->name('show');
     });

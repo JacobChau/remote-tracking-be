@@ -17,6 +17,16 @@ class StoreMeetingRequest extends FormRequest
     }
 
     /**
+     * Prepare the data for validation.
+     */
+    protected function prepareForValidation(): void
+    {
+        $this->merge([
+            'accessType' => LinkAccessType::coerce($this->accessType) ?? LinkAccessType::coerce(LinkAccessType::PUBLIC),
+        ]);
+    }
+
+    /**
      * Get the validation rules that apply to the request.
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
@@ -25,8 +35,10 @@ class StoreMeetingRequest extends FormRequest
     {
         return [
             'title' => 'required|string|max:255',
-            'startDate' => 'required|date',
-            'endDate' => 'required|date',
+            'startDate' => 'nullable|date',
+            'endDate' => 'nullable|date',
+            'description' => 'nullable|string',
+            'participants' => 'nullable|array',
             'accessType' => ['required', new Enum(LinkAccessType::class)],
         ];
     }

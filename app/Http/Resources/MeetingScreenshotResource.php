@@ -5,14 +5,13 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use TiMacDonald\JsonApi\JsonApiResource;
 
-class UserScreenshotResource extends JsonApiResource
+class MeetingScreenshotResource extends JsonApiResource
 {
     /**
      * @var string[]
      */
     protected array $attributes = [
-        'name',
-        'avatarUrl',
+        'title',
         'screenshotUrl',
     ];
 
@@ -21,8 +20,7 @@ class UserScreenshotResource extends JsonApiResource
         $screenshot = $this->screenshots->first();
 
         return [
-            'name' => $this->name,
-            'avatarUrl' => $this->avatar,
+            'title' => $this->title,
             'screenshotUrl' => $screenshot->image_key ?? null,
         ];
     }

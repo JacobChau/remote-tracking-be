@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreActivityLogRequest;
 use App\Services\ActivityLogService;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
 class ActivityLogController extends Controller
 {
@@ -18,14 +17,26 @@ class ActivityLogController extends Controller
 
     public function store(StoreActivityLogRequest $request): JsonResponse
     {
-        $response = $this->activityLogService->create($request->validated());
+        $validated = $request->validated();
+        $response = $this->activityLogService->create([
+            'action' => $validated['action'],
+            'user_id' => $validated['userId'],
+            'meeting_id' => $validated['meetingId'],
+        ]);
 
         return $this->sendResponse($response, 'Activity log created successfully.');
     }
 
-    public function getStaffActivityLog(): JsonResponse
+    public function getStaffActivityLog(string $userId): JsonResponse
     {
-        $response = $this->activityLogService->getStaffActivityLog(request()->user()->id);
+        $response = $this->activityLogService->getStaffActivityLog($userId);
+
+        return $this->sendResponse($response, 'Activity log retrieved successfully.');
+    }
+
+    public function getStaffMeetingActivityLog(string $staffId, string $meetingId): JsonResponse
+    {
+        $response = $this->activityLogService->getStaffMeetingActivityLog($staffId, $meetingId);
 
         return $this->sendResponse($response, 'Activity log retrieved successfully.');
     }

@@ -3,7 +3,6 @@
 namespace App\Http\Requests;
 
 use App\Enums\ActivityAction;
-use App\Enums\LinkAccessType;
 use BenSampo\Enum\Rules\Enum;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -38,8 +37,8 @@ class StoreActivityLogRequest extends FormRequest
     {
         return [
             'action' => ['required', new Enum(ActivityAction::class)],
-            'user_id' => ['required', 'exists:users,id'],
-            'meeting_id' => ['required', 'exists:meetings,id'],
+            'userId' => 'required|exists:users,id',
+            'meetingId' => 'required|exists:meetings,id',
         ];
     }
 }
