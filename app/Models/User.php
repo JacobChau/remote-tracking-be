@@ -8,6 +8,7 @@ use App\Notifications\VerifyEmailQueued;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
@@ -101,6 +102,16 @@ class User extends Authenticatable implements JWTSubject, MustVerifyEmail
         return $this->belongsToMany(Meeting::class, 'user_meetings')->withTimestamps();
     }
 
+    public function screenshots(): HasMany
+    {
+        return $this->hasMany(Screenshot::class);
+    }
+
+    public function activityLogs(): HasMany
+    {
+        return $this->hasMany(ActivityLog::class);
+    }
+
     // ------------------ Scopes ------------------
     public function scopeEmail($query, string $email)
     {
@@ -120,5 +131,10 @@ class User extends Authenticatable implements JWTSubject, MustVerifyEmail
     public function scopeRememberToken($query, string $refreshToken)
     {
         return $query->where('remember_token', $refreshToken);
+    }
+
+    public function scopeRole($query, int $role)
+    {
+        return $query->where('role', $role);
     }
 }

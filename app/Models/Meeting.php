@@ -45,4 +45,14 @@ class Meeting extends Model
     {
         return $this->hasMany(LinkSetting::class);
     }
+
+    public function screenshots(): HasMany
+    {
+        return $this->hasMany(Screenshot::class);
+    }
+
+    public function activityLogs(): HasMany
+    {
+        return $this->hasMany(ActivityLog::class);
+    }
 }
