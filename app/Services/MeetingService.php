@@ -5,11 +5,12 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Enums\LinkAccessType;
-use App\Http\Resources\MeetingResource;
 use App\Http\Resources\MeetingScreenshotResource;
+use App\Http\Resources\UserMeetingResource;
 use App\Models\Meeting;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\DB;
 
 class MeetingService extends BaseService
 {
@@ -26,8 +27,12 @@ class MeetingService extends BaseService
 
     public function join(string $hash): JsonResponse
     {
-
         $linkSetting = $this->linkService->findOneOrFail(['hash' => $hash]);
+
+        $meeting = $linkSetting->meeting;
+
+        // create a record in the pivot table if the user is not already attached
+        $meeting->users()->syncWithoutDetaching(auth()->user()->id);
 
         if (! $linkSetting->is_enabled) {
             return response()->json(['status' => 'link_disabled'], 403);
@@ -43,15 +48,13 @@ class MeetingService extends BaseService
 
         if ($linkSetting->access_type === LinkAccessType::PRIVATE) {
             $staffId = auth()->user()->id;
-            $linkAccess = $this->linkAccessService->findOneOrFail(['link_id' => $linkSetting->id, 'user_id' => $staffId]);
+            $linkAccess = $this->linkAccessService->findOne(['link_id' => $linkSetting->id, 'user_id' => $staffId]);
             if (! $linkAccess) {
                 return response()->json(['status' => 'access_denied'], 403);
             }
         }
 
-        $meeting = $linkSetting->meeting;
-
-        return response()->json(new MeetingResource($meeting));
+        return response()->json(new UserMeetingResource($meeting));
     }
 
     public function getMeetingScreenshot(): array
@@ -63,30 +66,37 @@ class MeetingService extends BaseService
 
     public function create(array $data): object
     {
-        $meeting = parent::create([
-            'title' => $data['title'],
-            'start_date' => $data['startDate'] ?? null,
-            'end_date' => $data['endDate'] ?? null,
-        ]);
+        DB::beginTransaction();
+        try {
+            $meeting = parent::create([
+                'title' => $data['title'],
+                'start_date' => $data['startDate'] ?? null,
+                'end_date' => $data['endDate'] ?? null,
+            ]);
 
-        $linkSetting = $meeting->linkSetting()->create([
-            'access_type' => $data['accessType']->value,
-            'is_enabled' => true,
-            'start_date' => $data['startDate'] ?? null,
-            'end_date' => $data['endDate'] ?? null,
-            'hash' => substr(md5($meeting->id.microtime()), 0, 12),
-        ]);
+            $linkSetting = $meeting->linkSetting()->create([
+                'access_type' => $data['accessType']->value,
+                'is_enabled' => true,
+                'start_date' => $data['startDate'] ?? null,
+                'end_date' => $data['endDate'] ?? null,
+                'hash' => substr(md5($meeting->id . microtime()), 0, 12),
+            ]);
 
-        if (isset($data['participants']) && is_array($data['participants'])) {
-            foreach ($data['participants'] as $userId) {
-                $linkSetting->accesses()->create([
-                    'user_id' => $userId,
-                    'is_allowed' => true,
-                ]);
+            if (isset($data['participants']) && is_array($data['participants'])) {
+                foreach ($data['participants'] as $userId) {
+                    $linkSetting->accesses()->create([
+                        'user_id' => $userId,
+                        'is_allowed' => true,
+                    ]);
+                }
             }
+
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollBack();
+            throw $e;
         }
 
-        // return hash
         return $linkSetting;
     }
 
@@ -101,8 +111,6 @@ class MeetingService extends BaseService
     public function getList(?string $resourceClass = null, array $input = [], ?Builder $query = null, array $relations = []): array
     {
         $query = $this->model->query();
-
-        //        http://localhost:8000/api/meetings?searchKeyword=&sort=created_at:desc&page=1&perPage=8&filters[startDate]=2024-02-09&filters[endDate]=2024-03-03
 
         if (request()->has('filters')) {
             $filters = request()->get('filters');
@@ -121,6 +129,62 @@ class MeetingService extends BaseService
         }
 
         return parent::getList($resourceClass, $input, $query, $relations);
+    }
 
+    public function updateMeeting(Meeting $meeting, array $data): void
+    {
+        DB::beginTransaction();
+        try {
+            $linkSetting = $meeting->linkSetting()->firstOrFail();
+
+            if (isset($data['participants']) && is_array($data['participants'])) {
+                $currentParticipantIds = $linkSetting->accesses()->pluck('user_id')->toArray();
+                $newParticipantIds = $data['participants'];
+
+                // Compute the participants to add and to remove
+                $participantIdsToAdd = array_diff($newParticipantIds, $currentParticipantIds);
+                $participantIdsToRemove = array_diff($currentParticipantIds, $newParticipantIds);
+
+                // Add new participants
+                foreach ($participantIdsToAdd as $userId) {
+                    $linkSetting->accesses()->create([
+                        'user_id' => $userId,
+                        'is_allowed' => true,
+                    ]);
+                }
+
+                // Remove participants not in the new list
+                if (!empty($participantIdsToRemove)) {
+                    $linkSetting->accesses()->whereIn('user_id', $participantIdsToRemove)->delete();
+                }
+            }
+
+            if (isset($data['linkEnabled'])) {
+                $linkSettingData['is_enabled'] = $data['linkEnabled'];
+            }
+
+            if (isset($data['accessType'])) {
+                $linkSettingData['access_type'] = $data['accessType']->value;
+            }
+
+            if (isset($data['startDate'])) {
+                $linkSettingData['start_date'] = $data['startDate'];
+            }
+
+            if (isset($data['endDate'])) {
+                $linkSettingData['end_date'] = $data['endDate'];
+            }
+
+            $linkSetting->update($linkSettingData);
+
+            // Prepare meeting updates
+            $meetingData = collect($data)->only(['title', 'startDate', 'endDate'])->filter()->all();
+            $meeting->update($meetingData);
+
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollBack();
+            throw $e;
+        }
     }
 }

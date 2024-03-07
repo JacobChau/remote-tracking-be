@@ -46,6 +46,7 @@ class AuthController extends Controller
         }
 
         return $this->sendResponse([
+            'role' => $response['role'] ?? null,
             'accessToken' => $response['accessToken'],
             'refreshToken' => $response['refreshToken'],
         ], 'Token refreshed successfully');
@@ -68,6 +69,7 @@ class AuthController extends Controller
         }
 
         return $this->sendResponse([
+            'role' => $response['role'] ?? null,
             'accessToken' => $response['accessToken'],
             'refreshToken' => $response['refreshToken'],
         ], 'User logged in successfully');

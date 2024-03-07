@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Enums\UserRole;
 use GuzzleHttp\Client;
 use Illuminate\Support\Str;
 
@@ -37,7 +38,6 @@ class AuthService extends BaseService
             return [];
         }
 
-        // renew remember token
         $rememberToken = Str::random(32);
 
         $this->userService->update($user->id, [
@@ -45,6 +45,7 @@ class AuthService extends BaseService
         ]);
 
         return [
+            'role' => UserRole::getKey($user->role),
             'accessToken' => auth()->tokenById($user->id),
             'refreshToken' => $rememberToken,
         ];
@@ -69,6 +70,7 @@ class AuthService extends BaseService
         ]);
 
         return [
+            'role' => UserRole::getKey($user->role),
             'accessToken' => auth()->tokenById(auth()->id()),
             'refreshToken' => $rememberToken,
         ];

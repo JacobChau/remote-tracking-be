@@ -99,7 +99,7 @@ class User extends Authenticatable implements JWTSubject, MustVerifyEmail
     // ------------------ Relationships ------------------
     public function meetings(): BelongsToMany
     {
-        return $this->belongsToMany(Meeting::class, 'user_meetings')->withTimestamps();
+        return $this->belongsToMany(Meeting::class, 'user_meetings')->withTimestamps()->withPivot('auto_screenshot');
     }
 
     public function screenshots(): HasMany

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Events\MeetingEvent;
 use App\Http\Requests\StoreMeetingRequest;
+use App\Http\Requests\UpdateMeetingRequest;
 use App\Http\Resources\MeetingResource;
+use App\Models\Meeting;
 use App\Services\MeetingService;
 use Illuminate\Http\JsonResponse;
 use ReflectionException;
@@ -39,7 +41,7 @@ class MeetingController extends Controller
 
         broadcast(new MeetingEvent($meetingId, $staffId, 'left'))->toOthers();
 
-        return response()->json(['status' => 'left']);
+        return $this->sendResponse('You have left the meeting');
     }
 
     public function show(string $meetingId): JsonResponse
@@ -52,16 +54,26 @@ class MeetingController extends Controller
     public function store(StoreMeetingRequest $request): JsonResponse
     {
         $data = $request->validated();
-        $response = $this->meetingService->create($data);
+        $linkSetting = $this->meetingService->create($data);
 
-        return response()->json(['hash' => $response->hash]);
+        return response()->json(['hash' => $linkSetting->hash]);
     }
 
     public function showByHash(string $hash): JsonResponse
     {
-        // hash is store in the link setting, foreign key to the meeting
         $meeting = $this->meetingService->showByHash($hash);
 
         return response()->json(new MeetingResource($meeting));
+    }
+
+    /**
+     * @throws \Exception
+     */
+    public function update(Meeting $meeting, UpdateMeetingRequest $request): JsonResponse
+    {
+        $data = $request->validated();
+        $this->meetingService->updateMeeting($meeting, $data);
+
+        return $this->sendResponse('Meeting updated successfully');
     }
 }

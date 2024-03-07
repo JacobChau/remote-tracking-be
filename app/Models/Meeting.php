@@ -38,7 +38,7 @@ class Meeting extends Model
     // ------------------ Relationships ------------------
     public function users(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'user_meetings')->withTimestamps();
+        return $this->belongsToMany(User::class, 'user_meetings')->withTimestamps()->withPivot('auto_screenshot');
     }
 
     public function linkSetting(): HasMany

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreScreenshotRequest;
 use App\Services\ScreenshotService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -41,9 +42,16 @@ class ScreenshotController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreScreenshotRequest $request): JsonResponse
     {
-        //
+        $data = $request->validated();
+        $response = $this->screenShotService->create([
+            'user_id' => $data['userId'],
+            'meeting_id' => $data['meetingId'],
+            'image_key' => $data['imageKey'],
+        ]);
+
+        return $this->sendResponse($response, 'Screenshot created successfully');
     }
 
     /**

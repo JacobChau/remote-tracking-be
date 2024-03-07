@@ -40,4 +40,11 @@ class ActivityLogController extends Controller
 
         return $this->sendResponse($response, 'Activity log retrieved successfully.');
     }
+
+    public function getMeetingActivityLog(string $meetingId): JsonResponse
+    {
+        $response = $this->activityLogService->getMeetingActivityLog($meetingId);
+
+        return $this->sendResponse($response, 'Activity log retrieved successfully.');
+    }
 }
