@@ -13,6 +13,7 @@ use Tests\TestCase;
 class CreateActivityTest extends TestCase
 {
     use RefreshDatabase;
+
     private ActivityLogService $service;
 
     public function setUp(): void
@@ -47,49 +48,48 @@ class CreateActivityTest extends TestCase
             'join meeting' => [
                 [
                     'action' => ActivityAction::JOIN_MEETING,
-                ]
+                ],
             ],
             'leave meeting' => [
                 [
                     'action' => ActivityAction::LEAVE_MEETING,
-                ]
+                ],
             ],
             'turn on camera' => [
                 [
                     'action' => ActivityAction::TURN_ON_CAMERA,
-                ]
+                ],
             ],
             'turn off camera' => [
                 [
                     'action' => ActivityAction::TURN_OFF_CAMERA,
-                ]
+                ],
             ],
             'turn on mic' => [
                 [
                     'action' => ActivityAction::TURN_ON_MIC,
-                ]
+                ],
             ],
             'turn off mic' => [
                 [
                     'action' => ActivityAction::TURN_OFF_MIC,
-                ]
+                ],
             ],
             'start screen sharing' => [
                 [
                     'action' => ActivityAction::START_SCREEN_SHARING,
-                ]
+                ],
             ],
             'stop screen sharing' => [
                 [
                     'action' => ActivityAction::STOP_SCREEN_SHARING,
-                ]
+                ],
             ],
             'no face detected' => [
                 [
                     'action' => ActivityAction::NO_FACE_DETECTED,
-                ]
-            ]
+                ],
+            ],
         ];
     }
-
 }

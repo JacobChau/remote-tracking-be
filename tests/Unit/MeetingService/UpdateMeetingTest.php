@@ -7,10 +7,7 @@ use App\Models\LinkSetting;
 use App\Models\Meeting;
 use App\Models\User;
 use App\Services\MeetingService;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Tests\TestCase;
 
@@ -26,62 +23,62 @@ class UpdateMeetingTest extends TestCase
         $this->service = $this->app->make(MeetingService::class);
     }
 
-//    public function updateMeeting(Meeting $meeting, array $data): void
-//    {
-//        DB::beginTransaction();
-//        try {
-//            $linkSetting = $meeting->linkSetting()->firstOrFail();
-//
-//            if (isset($data['participants']) && is_array($data['participants'])) {
-//                $currentParticipantIds = $linkSetting->accesses()->pluck('user_id')->toArray();
-//                $newParticipantIds = $data['participants'];
-//
-//                // Compute the participants to add and to remove
-//                $participantIdsToAdd = array_diff($newParticipantIds, $currentParticipantIds);
-//                $participantIdsToRemove = array_diff($currentParticipantIds, $newParticipantIds);
-//
-//                // Add new participants
-//                foreach ($participantIdsToAdd as $userId) {
-//                    $linkSetting->accesses()->create([
-//                        'user_id' => $userId,
-//                        'is_allowed' => true,
-//                    ]);
-//                }
-//
-//                // Remove participants not in the new list
-//                if (!empty($participantIdsToRemove)) {
-//                    $linkSetting->accesses()->whereIn('user_id', $participantIdsToRemove)->delete();
-//                }
-//            }
-//
-//            if (isset($data['linkEnabled'])) {
-//                $linkSettingData['is_enabled'] = $data['linkEnabled'];
-//            }
-//
-//            if (isset($data['accessType'])) {
-//                $linkSettingData['access_type'] = $data['accessType']->value;
-//            }
-//
-//            if (isset($data['startDate'])) {
-//                $linkSettingData['start_date'] = $data['startDate'];
-//            }
-//
-//            if (isset($data['endDate'])) {
-//                $linkSettingData['end_date'] = $data['endDate'];
-//            }
-//
-//            $linkSetting->update($linkSettingData);
-//
-//            // Prepare meeting updates
-//            $meetingData = collect($data)->only(['title', 'startDate', 'endDate'])->filter()->all();
-//            $meeting->update($meetingData);
-//
-//            DB::commit();
-//        } catch (Exception $e) {
-//            DB::rollBack();
-//            throw $e;
-//        }
-//    }
+    //    public function updateMeeting(Meeting $meeting, array $data): void
+    //    {
+    //        DB::beginTransaction();
+    //        try {
+    //            $linkSetting = $meeting->linkSetting()->firstOrFail();
+    //
+    //            if (isset($data['participants']) && is_array($data['participants'])) {
+    //                $currentParticipantIds = $linkSetting->accesses()->pluck('user_id')->toArray();
+    //                $newParticipantIds = $data['participants'];
+    //
+    //                // Compute the participants to add and to remove
+    //                $participantIdsToAdd = array_diff($newParticipantIds, $currentParticipantIds);
+    //                $participantIdsToRemove = array_diff($currentParticipantIds, $newParticipantIds);
+    //
+    //                // Add new participants
+    //                foreach ($participantIdsToAdd as $userId) {
+    //                    $linkSetting->accesses()->create([
+    //                        'user_id' => $userId,
+    //                        'is_allowed' => true,
+    //                    ]);
+    //                }
+    //
+    //                // Remove participants not in the new list
+    //                if (!empty($participantIdsToRemove)) {
+    //                    $linkSetting->accesses()->whereIn('user_id', $participantIdsToRemove)->delete();
+    //                }
+    //            }
+    //
+    //            if (isset($data['linkEnabled'])) {
+    //                $linkSettingData['is_enabled'] = $data['linkEnabled'];
+    //            }
+    //
+    //            if (isset($data['accessType'])) {
+    //                $linkSettingData['access_type'] = $data['accessType']->value;
+    //            }
+    //
+    //            if (isset($data['startDate'])) {
+    //                $linkSettingData['start_date'] = $data['startDate'];
+    //            }
+    //
+    //            if (isset($data['endDate'])) {
+    //                $linkSettingData['end_date'] = $data['endDate'];
+    //            }
+    //
+    //            $linkSetting->update($linkSettingData);
+    //
+    //            // Prepare meeting updates
+    //            $meetingData = collect($data)->only(['title', 'startDate', 'endDate'])->filter()->all();
+    //            $meeting->update($meetingData);
+    //
+    //            DB::commit();
+    //        } catch (Exception $e) {
+    //            DB::rollBack();
+    //            throw $e;
+    //        }
+    //    }
 
     public function testUpdateMeeting(): void
     {

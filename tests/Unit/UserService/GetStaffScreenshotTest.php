@@ -7,7 +7,6 @@ use App\Http\Resources\UserScreenshotResource;
 use App\Models\Screenshot;
 use App\Models\User;
 use App\Services\UserService;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -23,13 +22,13 @@ class GetStaffScreenshotTest extends TestCase
         $this->service = $this->app->make(UserService::class);
     }
 
-//    public function getStaffScreenshot(): array
-//    {
-//        $query = $this->model->query();
-//        $query->role(UserRole::STAFF);
-//
-//        return $this->getList(UserScreenshotResource::class, request()->all(), $query, ['screenshots']);
-//    }
+    //    public function getStaffScreenshot(): array
+    //    {
+    //        $query = $this->model->query();
+    //        $query->role(UserRole::STAFF);
+    //
+    //        return $this->getList(UserScreenshotResource::class, request()->all(), $query, ['screenshots']);
+    //    }
 
     public function testGetStaffScreenshotSuccess()
     {

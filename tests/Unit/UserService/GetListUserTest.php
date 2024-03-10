@@ -11,6 +11,7 @@ use Tests\TestCase;
 class GetListUserTest extends TestCase
 {
     use RefreshDatabase;
+
     private UserService $service;
 
     public function setUp(): void
@@ -19,16 +20,16 @@ class GetListUserTest extends TestCase
         $this->service = $this->app->make(UserService::class);
     }
 
-//    public function getList(?string $resourceClass = null, array $input = [], ?Builder $query = null, array $relations = []): array
-//    {
-//        $query = $this->model->query();
-//        if (isset($input['searchKeyword'])) {
-//            $query->where('name', 'like', '%'.$input['searchKeyword'].'%');
-//            $query->orWhere('email', 'like', '%'.$input['searchKeyword'].'%');
-//        }
-//
-//        return parent::getList($resourceClass, $input, $query, $relations);
-//    }
+    //    public function getList(?string $resourceClass = null, array $input = [], ?Builder $query = null, array $relations = []): array
+    //    {
+    //        $query = $this->model->query();
+    //        if (isset($input['searchKeyword'])) {
+    //            $query->where('name', 'like', '%'.$input['searchKeyword'].'%');
+    //            $query->orWhere('email', 'like', '%'.$input['searchKeyword'].'%');
+    //        }
+    //
+    //        return parent::getList($resourceClass, $input, $query, $relations);
+    //    }
 
     public function testGetListUser()
     {

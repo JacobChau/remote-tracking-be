@@ -31,9 +31,9 @@ class ActivityLogService extends BaseService
         // Apply filters from request
         if ($this->request->has('filters')) {
             $filters = $this->request->get('filters');
-            $query->when($filters['startedAt'] ?? null, fn($query) => $query->whereDate('created_at', '>=', $filters['startedAt']))
-                ->when($filters['endedAt'] ?? null, fn($query) => $query->whereDate('created_at', '<=', $filters['endedAt']))
-                ->when($filters['action'] ?? null, fn($query) => $query->where('action', ActivityAction::getValue($filters['action'])));
+            $query->when($filters['startedAt'] ?? null, fn ($query) => $query->whereDate('created_at', '>=', $filters['startedAt']))
+                ->when($filters['endedAt'] ?? null, fn ($query) => $query->whereDate('created_at', '<=', $filters['endedAt']))
+                ->when($filters['action'] ?? null, fn ($query) => $query->where('action', ActivityAction::getValue($filters['action'])));
         }
 
         // Apply sorting from request
@@ -82,7 +82,7 @@ class ActivityLogService extends BaseService
     {
         $log = $this->model->create($data);
 
-        event(new ActivityLogCreatedEvent(new UserActivityLogResource($log), (int)$log->user_id, (int)$log->meeting_id, $log->user->name));
+        event(new ActivityLogCreatedEvent(new UserActivityLogResource($log), (int) $log->user_id, (int) $log->meeting_id, $log->user->name));
 
         return $log;
     }

@@ -5,14 +5,13 @@ namespace AuthService;
 use App\Models\User;
 use App\Services\AuthService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
 use Tests\TestCase;
 
 class RefreshTokenTest extends TestCase
 {
     use RefreshDatabase;
+
     private AuthService $service;
 
     public function setUp(): void
@@ -51,5 +50,4 @@ class RefreshTokenTest extends TestCase
         $response = $this->service->refreshToken(Str::random(32));
         $this->assertEmpty($response);
     }
-
 }

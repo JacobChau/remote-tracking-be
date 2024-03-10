@@ -14,4 +14,3 @@ final class PaginationSetting extends Enum
 
     const ORDER_DIRECTION = 'desc';
 }
-

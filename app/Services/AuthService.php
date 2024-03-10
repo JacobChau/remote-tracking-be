@@ -52,7 +52,7 @@ class AuthService extends BaseService
     private function getUserInfoFromGoogle(string $accessToken)
     {
         $response = Http::get('https://www.googleapis.com/oauth2/v3/userinfo', [
-            'access_token' => $accessToken
+            'access_token' => $accessToken,
         ]);
 
         return json_decode($response->body());

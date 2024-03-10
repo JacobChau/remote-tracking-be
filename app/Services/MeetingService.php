@@ -61,7 +61,6 @@ class MeetingService extends BaseService
         return response()->json(new UserMeetingResource($meeting));
     }
 
-
     public function getMeetingScreenshot(): array
     {
         $query = $this->model->query();
@@ -87,7 +86,7 @@ class MeetingService extends BaseService
                 'is_enabled' => $data['linkEnabled'] ?? true,
                 'start_date' => $data['startDate'] ?? null,
                 'end_date' => $data['endDate'] ?? null,
-                'hash' => substr(md5($meeting->id . microtime()), 0, 12),
+                'hash' => substr(md5($meeting->id.microtime()), 0, 12),
             ]);
 
             if (isset($data['participants']) && is_array($data['participants'])) {
@@ -170,7 +169,7 @@ class MeetingService extends BaseService
                 }
 
                 // Remove participants not in the new list
-                if (!empty($participantIdsToRemove)) {
+                if (! empty($participantIdsToRemove)) {
                     $linkSetting->accesses()->whereIn('user_id', $participantIdsToRemove)->delete();
                 }
             }

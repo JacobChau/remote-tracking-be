@@ -2,8 +2,6 @@
 
 namespace ScreenshotService;
 
-use App\Http\Resources\UserScreenshotDetailResource;
-use App\Models\ActivityLog;
 use App\Models\Screenshot;
 use App\Models\User;
 use App\Services\ScreenshotService;
@@ -13,6 +11,7 @@ use Tests\TestCase;
 class GetStaffScreenshotDetailTest extends TestCase
 {
     use RefreshDatabase;
+
     private ScreenshotService $service;
 
     public function setUp(): void

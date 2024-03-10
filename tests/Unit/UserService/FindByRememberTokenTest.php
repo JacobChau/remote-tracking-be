@@ -2,10 +2,8 @@
 
 namespace Tests\Unit\UserService;
 
-use App\Models\Screenshot;
 use App\Models\User;
 use App\Services\UserService;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 

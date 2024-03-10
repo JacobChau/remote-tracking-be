@@ -25,6 +25,7 @@ class UploadImageToS3 implements ShouldQueue
         $this->imageUrl = $imageUrl;
         $this->fileName = $fileName;
     }
+
     /**
      * Execute the job.
      */

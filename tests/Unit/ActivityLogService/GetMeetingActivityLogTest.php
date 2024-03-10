@@ -12,6 +12,7 @@ use Tests\TestCase;
 class GetMeetingActivityLogTest extends TestCase
 {
     use RefreshDatabase;
+
     private ActivityLogService $service;
 
     public function setUp(): void

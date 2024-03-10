@@ -14,8 +14,11 @@ class ActivityLogCreatedEvent implements ShouldBroadcast
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public UserActivityLogResource $log;
+
     public int $staffId;
+
     public int $meetingId;
+
     public string $staffName;
 
     /**
@@ -31,8 +34,6 @@ class ActivityLogCreatedEvent implements ShouldBroadcast
 
     /**
      * Get the channels the event should broadcast on.
-     *
-     * @return Channel
      */
     public function broadcastOn(): Channel
     {

@@ -4,7 +4,6 @@ namespace Tests\Unit\MeetingService;
 
 use App\Enums\LinkAccessType;
 use App\Models\LinkSetting;
-use App\Models\Meeting;
 use App\Models\User;
 use App\Services\MeetingService;
 use Illuminate\Foundation\Testing\RefreshDatabase;

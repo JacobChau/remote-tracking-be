@@ -8,7 +8,6 @@ use App\Models\Meeting;
 use App\Models\User;
 use App\Services\MeetingService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Tests\TestCase;
@@ -25,41 +24,41 @@ class CreateMeetingTest extends TestCase
         $this->service = $this->app->make(MeetingService::class);
     }
 
-//    public function create(array $data): object
-//    {
-//        DB::beginTransaction();
-//        try {
-//            $meeting = parent::create([
-//                'title' => $data['title'],
-//                'start_date' => $data['startDate'] ?? null,
-//                'end_date' => $data['endDate'] ?? null,
-//            ]);
-//
-//            $linkSetting = $meeting->linkSetting()->create([
-//                'access_type' => $data['accessType']->value,
-//                'is_enabled' => true,
-//                'start_date' => $data['startDate'] ?? null,
-//                'end_date' => $data['endDate'] ?? null,
-//                'hash' => substr(md5($meeting->id . microtime()), 0, 12),
-//            ]);
-//
-//            if (isset($data['participants']) && is_array($data['participants'])) {
-//                foreach ($data['participants'] as $userId) {
-//                    $linkSetting->accesses()->create([
-//                        'user_id' => $userId,
-//                        'is_allowed' => true,
-//                    ]);
-//                }
-//            }
-//
-//            DB::commit();
-//        } catch (Exception $e) {
-//            DB::rollBack();
-//            throw $e;
-//        }
-//
-//        return $linkSetting;
-//    }
+    //    public function create(array $data): object
+    //    {
+    //        DB::beginTransaction();
+    //        try {
+    //            $meeting = parent::create([
+    //                'title' => $data['title'],
+    //                'start_date' => $data['startDate'] ?? null,
+    //                'end_date' => $data['endDate'] ?? null,
+    //            ]);
+    //
+    //            $linkSetting = $meeting->linkSetting()->create([
+    //                'access_type' => $data['accessType']->value,
+    //                'is_enabled' => true,
+    //                'start_date' => $data['startDate'] ?? null,
+    //                'end_date' => $data['endDate'] ?? null,
+    //                'hash' => substr(md5($meeting->id . microtime()), 0, 12),
+    //            ]);
+    //
+    //            if (isset($data['participants']) && is_array($data['participants'])) {
+    //                foreach ($data['participants'] as $userId) {
+    //                    $linkSetting->accesses()->create([
+    //                        'user_id' => $userId,
+    //                        'is_allowed' => true,
+    //                    ]);
+    //                }
+    //            }
+    //
+    //            DB::commit();
+    //        } catch (Exception $e) {
+    //            DB::rollBack();
+    //            throw $e;
+    //        }
+    //
+    //        return $linkSetting;
+    //    }
 
     public function testCreateMeeting(): void
     {

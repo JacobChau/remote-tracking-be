@@ -2,20 +2,16 @@
 
 namespace ScreenshotService;
 
-use App\Http\Resources\UserScreenshotDetailResource;
-use App\Models\ActivityLog;
 use App\Models\Meeting;
 use App\Models\Screenshot;
-use App\Models\User;
-use App\Services\ActivityLogService;
 use App\Services\ScreenshotService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Tests\TestCase;
 
 class GetMeetingScreenshotDetailTest extends TestCase
 {
     use RefreshDatabase;
+
     private ScreenshotService $service;
 
     public function setUp(): void

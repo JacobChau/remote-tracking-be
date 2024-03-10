@@ -12,6 +12,7 @@ use Tests\TestCase;
 class LoginGoogleTest extends TestCase
 {
     use RefreshDatabase, WithFaker;
+
     private AuthService $service;
 
     public function setUp(): void
@@ -23,7 +24,7 @@ class LoginGoogleTest extends TestCase
     public function testLoginWithGoogle()
     {
         $accessToken = 'test';
-        $fakeUserResponse = (object)[
+        $fakeUserResponse = (object) [
             'email' => 'test@example.com',
             'picture' => 'http://example.com/avatar.jpg',
             'family_name' => 'Doe',
@@ -31,7 +32,7 @@ class LoginGoogleTest extends TestCase
         ];
 
         Http::fake([
-            'https://www.googleapis.com/oauth2/v3/userinfo*' . $accessToken => Http::response(json_encode($fakeUserResponse), 200),
+            'https://www.googleapis.com/oauth2/v3/userinfo*'.$accessToken => Http::response(json_encode($fakeUserResponse), 200),
         ]);
 
         $user = User::factory()->create([
@@ -45,7 +46,7 @@ class LoginGoogleTest extends TestCase
         $this->assertDatabaseHas('users', [
             'email' => $fakeUserResponse->email,
             'avatar' => $fakeUserResponse->picture,
-            'name' => $fakeUserResponse->family_name . ' ' . $fakeUserResponse->given_name,
+            'name' => $fakeUserResponse->family_name.' '.$fakeUserResponse->given_name,
         ]);
     }
 }

@@ -8,12 +8,12 @@ use App\Models\Meeting;
 use App\Models\User;
 use App\Services\ActivityLogService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Tests\TestCase;
 
 class GetStaffMeetingActivityLogTest extends TestCase
 {
     use RefreshDatabase;
+
     private ActivityLogService $service;
 
     public function setUp(): void

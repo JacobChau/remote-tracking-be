@@ -11,6 +11,7 @@ use Tests\TestCase;
 class GetStaffActivityLogTest extends TestCase
 {
     use RefreshDatabase;
+
     private ActivityLogService $service;
 
     public function setUp(): void
