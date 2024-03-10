@@ -21,8 +21,15 @@ class UserActivityLogResource extends JsonApiResource
 
     public function toAttributes(Request $request): array
     {
+        $action = $this->action;
+        if ($action instanceof ActivityAction) {
+            $action = $action->key;
+        } else {
+            $action = ActivityAction::getKey($action);
+        }
+
         return [
-            'action' => ActivityAction::getKey($this->action),
+            'action' => $action,
             'userEmail' => $this->user->email,
             'meetingId' => $this->meeting->id,
             'meetingTitle' => $this->meeting->title,

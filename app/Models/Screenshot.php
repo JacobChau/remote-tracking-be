@@ -2,14 +2,13 @@
 
 namespace App\Models;
 
-use App\Traits\HasCreatedBy;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Screenshot extends Model
 {
-    use HasCreatedBy, HasFactory;
+    use HasFactory;
 
     /**
      * The attributes that are mass assignable.

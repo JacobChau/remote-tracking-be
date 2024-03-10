@@ -8,7 +8,6 @@ use App\Enums\UserRole;
 use App\Http\Resources\UserScreenshotResource;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Collection;
 
 class UserService extends BaseService
 {
@@ -20,11 +19,6 @@ class UserService extends BaseService
     public function findByRememberToken(string $refreshToken): ?User
     {
         return $this->model->query()->rememberToken($refreshToken)->first();
-    }
-
-    public function findByRole(int $role): Collection
-    {
-        return $this->model->query()->role($role)->get();
     }
 
     public function getStaffScreenshot(): array

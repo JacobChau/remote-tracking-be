@@ -8,14 +8,20 @@
         <testsuite name="Unit">
             <directory>tests/Unit</directory>
         </testsuite>
-        <testsuite name="Assessments">
-            <directory>tests/Unit/AssessmentService</directory>
-        </testsuite>
-        <testsuite name="Subject">
-            <directory>tests/Unit/SubjectService</directory>
-        </testsuite>
         <testsuite name="Feature">
             <directory>tests/Feature</directory>
+        </testsuite>
+        <testsuite name="Auth">
+            <directory>tests/Unit/AuthService</directory>
+        </testsuite>
+        <testsuite name="Upload">
+            <directory>tests/Unit/UploadService</directory>
+        </testsuite>
+        <testsuite name="Screenshot">
+            <directory>tests/Unit/ScreenshotService</directory>
+        </testsuite>
+        <testsuite name="Meeting">
+            <directory>tests/Unit/MeetingService</directory>
         </testsuite>
     </testsuites>
     <source>

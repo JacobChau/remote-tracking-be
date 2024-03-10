@@ -21,7 +21,7 @@ class UserScreenshotDetailResource extends JsonApiResource
     public function toAttributes(Request $request): array
     {
         return [
-            'screenshotUrl' => $this->image_key,
+            'screenshotUrl' => $this->image_key ?? null,
             'createdAt' => $this->created_at->format('Y-m-d H:i:s'),
             'meetingTitle' => $this->when($this->meeting, function () {
                 return $this->meeting->title;

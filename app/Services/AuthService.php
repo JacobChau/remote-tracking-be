@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
 
 class AuthService extends BaseService
@@ -37,7 +37,6 @@ class AuthService extends BaseService
             return [];
         }
 
-        // renew remember token
         $rememberToken = Str::random(32);
 
         $this->userService->update($user->id, [
@@ -52,10 +51,11 @@ class AuthService extends BaseService
 
     private function getUserInfoFromGoogle(string $accessToken)
     {
-        $client = new Client();
-        $response = $client->get('https://www.googleapis.com/oauth2/v3/userinfo?access_token='.$accessToken);
+        $response = Http::get('https://www.googleapis.com/oauth2/v3/userinfo', [
+            'access_token' => $accessToken,
+        ]);
 
-        return json_decode($response->getBody()->getContents());
+        return json_decode($response->body());
     }
 
     private function loginAndReturnToken($user): array
