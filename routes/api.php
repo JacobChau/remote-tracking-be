@@ -8,7 +8,6 @@ use App\Http\Controllers\MeetingController;
 use App\Http\Controllers\ScreenshotController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\WebRTCSignalController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -100,14 +99,6 @@ Route::middleware(['api', 'auth'])->group(function () {
         Route::get('/{meeting}', 'show')->name('show');
         Route::get('/join/{hash}', 'join')->name('join');
         Route::post('/{meeting}/leave', 'leave')->name('leave');
-    });
-
-    // WEBRTC ROUTES
-    Route::prefix('meetings')->name('webrtc.')->controller(WebRTCSignalController::class)->group(function () {
-        Route::post('/{meetingId}/offer', 'sendOffer')->name('offer');
-        Route::post('/{meetingId}/answer', 'sendAnswer')->name('answer');
-        Route::post('/{meetingId}/icecandidate', 'sendIceCandidate')->name('icecandidate');
-        Route::post('/{meetingId}/signal', 'sendSignal')->name('signal');
     });
 
     // Screenshot routes

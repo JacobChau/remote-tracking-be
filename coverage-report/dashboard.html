@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Dashboard for D:\RemoteTracking\be\app</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="_css/bootstrap.min.css?v=10.1.9" rel="stylesheet" type="text/css">
+  <link href="_css/nv.d3.min.css?v=10.1.9" rel="stylesheet" type="text/css">
+  <link href="_css/style.css?v=10.1.9" rel="stylesheet" type="text/css">
+  <link href="_css/custom.css" rel="stylesheet" type="text/css">
+ </head>
+ <body>
+  <header>
+   <div class="container-fluid">
+    <div class="row">
+     <div class="col-md-12">
+      <nav aria-label="breadcrumb">
+       <ol class="breadcrumb">
+         <li class="breadcrumb-item"><a href="index.html">D:\RemoteTracking\be\app</a></li>
+         <li class="breadcrumb-item active">(Dashboard)</li>
+
+       </ol>
+      </nav>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div class="container-fluid">
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Classes</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="classCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="classComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Http/Controllers/ActivityLogController.php.html#9">App\Http\Controllers\ActivityLogController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/AgoraTokenController.php.html#8">App\Http\Controllers\AgoraTokenController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Auth/AuthController.php.html#13">App\Http\Controllers\Auth\AuthController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Controller.php.html#11">App\Http\Controllers\Controller</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/MeetingController.php.html#14">App\Http\Controllers\MeetingController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/ScreenshotController.php.html#10">App\Http\Controllers\ScreenshotController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/UploadController.php.html#10">App\Http\Controllers\UploadController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/UserController.php.html#13">App\Http\Controllers\UserController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Middleware/Authenticate.php.html#8">App\Http\Middleware\Authenticate</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Middleware/RedirectIfAuthenticated.php.html#11">App\Http\Middleware\RedirectIfAuthenticated</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Middleware/RoleChecker.php.html#9">App\Http\Middleware\RoleChecker</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Middleware/TrustHosts.php.html#7">App\Http\Middleware\TrustHosts</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/ApiFormRequest.php.html#10">App\Http\Requests\ApiFormRequest</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/LoginGoogleRequest.php.html#7">App\Http\Requests\LoginGoogleRequest</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/RefreshTokenRequest.php.html#7">app\Http\Requests\RefreshTokenRequest</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/SendSignalRequest.php.html#7">App\Http\Requests\SendSignalRequest</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/StoreActivityLogRequest.php.html#9">App\Http\Requests\StoreActivityLogRequest</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/StoreMeetingRequest.php.html#9">App\Http\Requests\StoreMeetingRequest</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/StoreScreenshotRequest.php.html#7">App\Http\Requests\StoreScreenshotRequest</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/StoreUserRequest.php.html#9">App\Http\Requests\StoreUserRequest</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/UpdateMeetingRequest.php.html#9">App\Http\Requests\UpdateMeetingRequest</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/UpdateUserRequest.php.html#10">App\Http\Requests\UpdateUserRequest</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Resources/MeetingResource.php.html#11">App\Http\Resources\MeetingResource</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Resources/MeetingScreenshotResource.php.html#8">App\Http\Resources\MeetingScreenshotResource</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Resources/UserResource.php.html#10">App\Http\Resources\UserResource</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Resources/UserScreenshotDetailResource.php.html#8">App\Http\Resources\UserScreenshotDetailResource</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Resources/UserScreenshotResource.php.html#8">App\Http\Resources\UserScreenshotResource</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Lib/Agora/AccessToken.php.html#9">App\Lib\Agora\Message</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Lib/Agora/AccessToken.php.html#67">App\Lib\Agora\AccessToken</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Lib/Agora/RtcTokenBuilder.php.html#7">App\Lib\Agora\RtcTokenBuilder</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mail/AssessmentPublished.php.html#12">App\Mail\AssessmentPublished</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/LinkAccess.php.html#9">App\Models\LinkAccess</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Notifications/ResetPasswordQueued.php.html#10">App\Notifications\ResetPasswordQueued</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Policies/UserPolicy.php.html#8">App\Policies\UserPolicy</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Providers/BroadcastServiceProvider.php.html#8">App\Providers\BroadcastServiceProvider</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/User.php.html#16">App\Models\User</a></td><td class="text-right">35%</td></tr>
+       <tr><td><a href="Services/BaseService.php.html#14">App\Services\BaseService</a></td><td class="text-right">54%</td></tr>
+       <tr><td><a href="Console/Kernel.php.html#8">App\Console\Kernel</a></td><td class="text-right">66%</td></tr>
+       <tr><td><a href="Exceptions/Handler.php.html#10">App\Exceptions\Handler</a></td><td class="text-right">66%</td></tr>
+       <tr><td><a href="Providers/AppServiceProvider.php.html#8">App\Providers\AppServiceProvider</a></td><td class="text-right">66%</td></tr>
+       <tr><td><a href="Models/Meeting.php.html#13">App\Models\Meeting</a></td><td class="text-right">75%</td></tr>
+       <tr><td><a href="Providers/AuthServiceProvider.php.html#10">App\Providers\AuthServiceProvider</a></td><td class="text-right">75%</td></tr>
+       <tr><td><a href="Services/ActivityLogService.php.html#15">App\Services\ActivityLogService</a></td><td class="text-right">76%</td></tr>
+       <tr><td><a href="Traits/HasCreatedBy.php.html#8">App\Traits\HasCreatedBy</a></td><td class="text-right">83%</td></tr>
+       <tr><td><a href="Services/ScreenshotService.php.html#10">App\Services\ScreenshotService</a></td><td class="text-right">89%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Lib/Agora/AccessToken.php.html#67">App\Lib\Agora\AccessToken</a></td><td class="text-right">380</td></tr>
+       <tr><td><a href="Services/BaseService.php.html#14">App\Services\BaseService</a></td><td class="text-right">141</td></tr>
+       <tr><td><a href="Http/Controllers/UserController.php.html#13">App\Http\Controllers\UserController</a></td><td class="text-right">90</td></tr>
+       <tr><td><a href="Models/User.php.html#16">App\Models\User</a></td><td class="text-right">74</td></tr>
+       <tr><td><a href="Http/Controllers/Auth/AuthController.php.html#13">App\Http\Controllers\Auth\AuthController</a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="Http/Controllers/Controller.php.html#11">App\Http\Controllers\Controller</a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="Policies/UserPolicy.php.html#8">App\Policies\UserPolicy</a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="Http/Resources/MeetingResource.php.html#11">App\Http\Resources\MeetingResource</a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Lib/Agora/AccessToken.php.html#9">App\Lib\Agora\Message</a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Lib/Agora/RtcTokenBuilder.php.html#7">App\Lib\Agora\RtcTokenBuilder</a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Http/Middleware/RedirectIfAuthenticated.php.html#11">App\Http\Middleware\RedirectIfAuthenticated</a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Http/Requests/StoreActivityLogRequest.php.html#9">App\Http\Requests\StoreActivityLogRequest</a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Http/Middleware/RoleChecker.php.html#9">App\Http\Middleware\RoleChecker</a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Mail/AssessmentPublished.php.html#12">App\Mail\AssessmentPublished</a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Services/ScreenshotService.php.html#10">App\Services\ScreenshotService</a></td><td class="text-right">9</td></tr>
+       <tr><td><a href="Services/ActivityLogService.php.html#15">App\Services\ActivityLogService</a></td><td class="text-right">8</td></tr>
+       <tr><td><a href="Http/Middleware/Authenticate.php.html#8">App\Http\Middleware\Authenticate</a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Resources/UserResource.php.html#10">App\Http\Resources\UserResource</a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Providers/AppServiceProvider.php.html#8">App\Providers\AppServiceProvider</a></td><td class="text-right">3</td></tr>
+       <tr><td><a href="Traits/HasCreatedBy.php.html#8">App\Traits\HasCreatedBy</a></td><td class="text-right">3</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Methods</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="methodCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="methodComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Console/Kernel.php.html#13"><abbr title="App\Console\Kernel::schedule">schedule</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/ActivityLogController.php.html#13"><abbr title="App\Http\Controllers\ActivityLogController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/ActivityLogController.php.html#18"><abbr title="App\Http\Controllers\ActivityLogController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/ActivityLogController.php.html#30"><abbr title="App\Http\Controllers\ActivityLogController::getStaffActivityLog">getStaffActivityLog</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/ActivityLogController.php.html#37"><abbr title="App\Http\Controllers\ActivityLogController::getStaffMeetingActivityLog">getStaffMeetingActivityLog</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/ActivityLogController.php.html#44"><abbr title="App\Http\Controllers\ActivityLogController::getMeetingActivityLog">getMeetingActivityLog</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/AgoraTokenController.php.html#10"><abbr title="App\Http\Controllers\AgoraTokenController::generateToken">generateToken</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Auth/AuthController.php.html#19"><abbr title="App\Http\Controllers\Auth\AuthController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Auth/AuthController.php.html#28"><abbr title="App\Http\Controllers\Auth\AuthController::me">me</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Auth/AuthController.php.html#36"><abbr title="App\Http\Controllers\Auth\AuthController::refresh">refresh</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Auth/AuthController.php.html#58"><abbr title="App\Http\Controllers\Auth\AuthController::loginWithGoogle">loginWithGoogle</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/Controller.php.html#15"><abbr title="App\Http\Controllers\Controller::sendResponse">sendResponse</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/MeetingController.php.html#18"><abbr title="App\Http\Controllers\MeetingController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/MeetingController.php.html#26"><abbr title="App\Http\Controllers\MeetingController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/MeetingController.php.html#33"><abbr title="App\Http\Controllers\MeetingController::join">join</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/MeetingController.php.html#38"><abbr title="App\Http\Controllers\MeetingController::leave">leave</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/MeetingController.php.html#47"><abbr title="App\Http\Controllers\MeetingController::show">show</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/MeetingController.php.html#54"><abbr title="App\Http\Controllers\MeetingController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/MeetingController.php.html#62"><abbr title="App\Http\Controllers\MeetingController::showByHash">showByHash</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/MeetingController.php.html#72"><abbr title="App\Http\Controllers\MeetingController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/ScreenshotController.php.html#14"><abbr title="App\Http\Controllers\ScreenshotController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/ScreenshotController.php.html#22"><abbr title="App\Http\Controllers\ScreenshotController::getStaffScreenshot">getStaffScreenshot</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/ScreenshotController.php.html#27"><abbr title="App\Http\Controllers\ScreenshotController::getStaffScreenshotDetail">getStaffScreenshotDetail</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/ScreenshotController.php.html#32"><abbr title="App\Http\Controllers\ScreenshotController::getMeetingScreenshot">getMeetingScreenshot</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/ScreenshotController.php.html#37"><abbr title="App\Http\Controllers\ScreenshotController::getMeetingScreenshotDetail">getMeetingScreenshotDetail</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/ScreenshotController.php.html#45"><abbr title="App\Http\Controllers\ScreenshotController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/ScreenshotController.php.html#60"><abbr title="App\Http\Controllers\ScreenshotController::show">show</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/ScreenshotController.php.html#68"><abbr title="App\Http\Controllers\ScreenshotController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/ScreenshotController.php.html#76"><abbr title="App\Http\Controllers\ScreenshotController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/UploadController.php.html#14"><abbr title="App\Http\Controllers\UploadController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/UploadController.php.html#19"><abbr title="App\Http\Controllers\UploadController::upload">upload</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/UserController.php.html#17"><abbr title="App\Http\Controllers\UserController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/UserController.php.html#25"><abbr title="App\Http\Controllers\UserController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/UserController.php.html#40"><abbr title="App\Http\Controllers\UserController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/UserController.php.html#54"><abbr title="App\Http\Controllers\UserController::show">show</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/UserController.php.html#69"><abbr title="App\Http\Controllers\UserController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/UserController.php.html#81"><abbr title="App\Http\Controllers\UserController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/UserController.php.html#90"><abbr title="App\Http\Controllers\UserController::me">me</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Middleware/Authenticate.php.html#13"><abbr title="App\Http\Middleware\Authenticate::redirectTo">redirectTo</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Middleware/RedirectIfAuthenticated.php.html#18"><abbr title="App\Http\Middleware\RedirectIfAuthenticated::handle">handle</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Middleware/RoleChecker.php.html#16"><abbr title="App\Http\Middleware\RoleChecker::handle">handle</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Middleware/TrustHosts.php.html#14"><abbr title="App\Http\Middleware\TrustHosts::hosts">hosts</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/ApiFormRequest.php.html#12"><abbr title="App\Http\Requests\ApiFormRequest::failedValidation">failedValidation</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/LoginGoogleRequest.php.html#12"><abbr title="App\Http\Requests\LoginGoogleRequest::authorize">authorize</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/LoginGoogleRequest.php.html#22"><abbr title="App\Http\Requests\LoginGoogleRequest::rules">rules</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/RefreshTokenRequest.php.html#12"><abbr title="app\Http\Requests\RefreshTokenRequest::authorize">authorize</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/RefreshTokenRequest.php.html#22"><abbr title="app\Http\Requests\RefreshTokenRequest::rules">rules</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/SendSignalRequest.php.html#12"><abbr title="App\Http\Requests\SendSignalRequest::authorize">authorize</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/SendSignalRequest.php.html#22"><abbr title="App\Http\Requests\SendSignalRequest::rules">rules</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/StoreActivityLogRequest.php.html#14"><abbr title="App\Http\Requests\StoreActivityLogRequest::authorize">authorize</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/StoreActivityLogRequest.php.html#22"><abbr title="App\Http\Requests\StoreActivityLogRequest::prepareForValidation">prepareForValidation</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/StoreActivityLogRequest.php.html#36"><abbr title="App\Http\Requests\StoreActivityLogRequest::rules">rules</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/StoreMeetingRequest.php.html#14"><abbr title="App\Http\Requests\StoreMeetingRequest::authorize">authorize</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/StoreMeetingRequest.php.html#22"><abbr title="App\Http\Requests\StoreMeetingRequest::prepareForValidation">prepareForValidation</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/StoreMeetingRequest.php.html#34"><abbr title="App\Http\Requests\StoreMeetingRequest::rules">rules</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/StoreScreenshotRequest.php.html#12"><abbr title="App\Http\Requests\StoreScreenshotRequest::authorize">authorize</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/StoreScreenshotRequest.php.html#22"><abbr title="App\Http\Requests\StoreScreenshotRequest::rules">rules</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/StoreUserRequest.php.html#14"><abbr title="App\Http\Requests\StoreUserRequest::authorize">authorize</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/StoreUserRequest.php.html#22"><abbr title="App\Http\Requests\StoreUserRequest::prepareForValidation">prepareForValidation</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/StoreUserRequest.php.html#34"><abbr title="App\Http\Requests\StoreUserRequest::rules">rules</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/UpdateMeetingRequest.php.html#14"><abbr title="App\Http\Requests\UpdateMeetingRequest::authorize">authorize</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/UpdateMeetingRequest.php.html#22"><abbr title="App\Http\Requests\UpdateMeetingRequest::prepareForValidation">prepareForValidation</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/UpdateMeetingRequest.php.html#34"><abbr title="App\Http\Requests\UpdateMeetingRequest::rules">rules</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/UpdateUserRequest.php.html#15"><abbr title="App\Http\Requests\UpdateUserRequest::authorize">authorize</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/UpdateUserRequest.php.html#25"><abbr title="App\Http\Requests\UpdateUserRequest::prepareForValidation">prepareForValidation</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Requests/UpdateUserRequest.php.html#37"><abbr title="App\Http\Requests\UpdateUserRequest::rules">rules</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Resources/MeetingResource.php.html#18"><abbr title="App\Http\Resources\MeetingResource::toAttributes">toAttributes</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Resources/MeetingScreenshotResource.php.html#18"><abbr title="App\Http\Resources\MeetingScreenshotResource::toAttributes">toAttributes</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Resources/UserResource.php.html#26"><abbr title="App\Http\Resources\UserResource::toAttributes">toAttributes</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Resources/UserScreenshotDetailResource.php.html#21"><abbr title="App\Http\Resources\UserScreenshotDetailResource::toAttributes">toAttributes</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Resources/UserScreenshotResource.php.html#19"><abbr title="App\Http\Resources\UserScreenshotResource::toAttributes">toAttributes</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Lib/Agora/AccessToken.php.html#20"><abbr title="App\Lib\Agora\Message::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Lib/Agora/AccessToken.php.html#30"><abbr title="App\Lib\Agora\Message::packContent">packContent</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Lib/Agora/AccessToken.php.html#43"><abbr title="App\Lib\Agora\Message::unpackContent">unpackContent</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Lib/Agora/AccessToken.php.html#87"><abbr title="App\Lib\Agora\AccessToken::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Lib/Agora/AccessToken.php.html#92"><abbr title="App\Lib\Agora\AccessToken::setUid">setUid</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Lib/Agora/AccessToken.php.html#101"><abbr title="App\Lib\Agora\AccessToken::is_nonempty_string">is_nonempty_string</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Lib/Agora/AccessToken.php.html#111"><abbr title="App\Lib\Agora\AccessToken::init">init</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Lib/Agora/AccessToken.php.html#131"><abbr title="App\Lib\Agora\AccessToken::initWithToken">initWithToken</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Lib/Agora/AccessToken.php.html#141"><abbr title="App\Lib\Agora\AccessToken::addPrivilege">addPrivilege</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Lib/Agora/AccessToken.php.html#148"><abbr title="App\Lib\Agora\AccessToken::extract">extract</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Lib/Agora/AccessToken.php.html#194"><abbr title="App\Lib\Agora\AccessToken::build">build</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Lib/Agora/RtcTokenBuilder.php.html#31"><abbr title="App\Lib\Agora\RtcTokenBuilder::buildTokenWithUid">buildTokenWithUid</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Lib/Agora/RtcTokenBuilder.php.html#48"><abbr title="App\Lib\Agora\RtcTokenBuilder::buildTokenWithUserAccount">buildTokenWithUserAccount</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mail/AssessmentPublished.php.html#18"><abbr title="App\Mail\AssessmentPublished::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mail/AssessmentPublished.php.html#23"><abbr title="App\Mail\AssessmentPublished::build">build</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/LinkAccess.php.html#19"><abbr title="App\Models\LinkAccess::linkSetting">linkSetting</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/LinkAccess.php.html#24"><abbr title="App\Models\LinkAccess::user">user</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Meeting.php.html#54"><abbr title="App\Models\Meeting::activityLogs">activityLogs</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/User.php.html#71"><abbr title="App\Models\User::hasAnyRole">hasAnyRole</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/User.php.html#76"><abbr title="App\Models\User::isAdmin">isAdmin</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/User.php.html#84"><abbr title="App\Models\User::sendEmailVerificationNotification">sendEmailVerificationNotification</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/User.php.html#94"><abbr title="App\Models\User::sendPasswordResetNotification">sendPasswordResetNotification</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/User.php.html#100"><abbr title="App\Models\User::meetings">meetings</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/User.php.html#110"><abbr title="App\Models\User::activityLogs">activityLogs</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/User.php.html#116"><abbr title="App\Models\User::scopeEmail">scopeEmail</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/User.php.html#121"><abbr title="App\Models\User::scopeName">scopeName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/User.php.html#126"><abbr title="App\Models\User::scopeVerified">scopeVerified</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Notifications/ResetPasswordQueued.php.html#14"><abbr title="App\Notifications\ResetPasswordQueued::toMail">toMail</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Policies/UserPolicy.php.html#10"><abbr title="App\Policies\UserPolicy::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Policies/UserPolicy.php.html#15"><abbr title="App\Policies\UserPolicy::delete">delete</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Providers/BroadcastServiceProvider.php.html#13"><abbr title="App\Providers\BroadcastServiceProvider::boot">boot</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/BaseService.php.html#28"><abbr title="App\Services\BaseService::delete">delete</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/BaseService.php.html#33"><abbr title="App\Services\BaseService::getById">getById</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/BaseService.php.html#89"><abbr title="App\Services\BaseService::getModel">getModel</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/BaseService.php.html#181"><abbr title="App\Services\BaseService::applySearchType">applySearchType</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/ScreenshotService.php.html#23"><abbr title="App\Services\ScreenshotService::getStaffScreenshot">getStaffScreenshot</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/ScreenshotService.php.html#42"><abbr title="App\Services\ScreenshotService::getMeetingScreenshot">getMeetingScreenshot</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Traits/HasCreatedBy.php.html#20"><abbr title="App\Traits\HasCreatedBy::createdBy">createdBy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/BaseService.php.html#150"><abbr title="App\Services\BaseService::addSearchParam">addSearchParam</abbr></a></td><td class="text-right">26%</td></tr>
+       <tr><td><a href="Providers/AppServiceProvider.php.html#21"><abbr title="App\Providers\AppServiceProvider::boot">boot</abbr></a></td><td class="text-right">50%</td></tr>
+       <tr><td><a href="Services/ActivityLogService.php.html#25"><abbr title="App\Services\ActivityLogService::applyFiltersAndSorts">applyFiltersAndSorts</abbr></a></td><td class="text-right">50%</td></tr>
+       <tr><td><a href="Services/BaseService.php.html#50"><abbr title="App\Services\BaseService::findOne">findOne</abbr></a></td><td class="text-right">62%</td></tr>
+       <tr><td><a href="Services/BaseService.php.html#67"><abbr title="App\Services\BaseService::findOneOrFail">findOneOrFail</abbr></a></td><td class="text-right">62%</td></tr>
+       <tr><td><a href="Exceptions/Handler.php.html#26"><abbr title="App\Exceptions\Handler::register">register</abbr></a></td><td class="text-right">66%</td></tr>
+       <tr><td><a href="Providers/AuthServiceProvider.php.html#24"><abbr title="App\Providers\AuthServiceProvider::boot">boot</abbr></a></td><td class="text-right">75%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Http/Controllers/Controller.php.html#15"><abbr title="App\Http\Controllers\Controller::sendResponse">sendResponse</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="Http/Resources/MeetingResource.php.html#18"><abbr title="App\Http\Resources\MeetingResource::toAttributes">toAttributes</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Lib/Agora/AccessToken.php.html#148"><abbr title="App\Lib\Agora\AccessToken::extract">extract</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Services/BaseService.php.html#150"><abbr title="App\Services\BaseService::addSearchParam">addSearchParam</abbr></a></td><td class="text-right">26</td></tr>
+       <tr><td><a href="Http/Middleware/RedirectIfAuthenticated.php.html#18"><abbr title="App\Http\Middleware\RedirectIfAuthenticated::handle">handle</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Lib/Agora/AccessToken.php.html#111"><abbr title="App\Lib\Agora\AccessToken::init">init</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Lib/Agora/RtcTokenBuilder.php.html#48"><abbr title="App\Lib\Agora\RtcTokenBuilder::buildTokenWithUserAccount">buildTokenWithUserAccount</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Services/BaseService.php.html#181"><abbr title="App\Services\BaseService::applySearchType">applySearchType</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Http/Middleware/RoleChecker.php.html#16"><abbr title="App\Http\Middleware\RoleChecker::handle">handle</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Lib/Agora/AccessToken.php.html#101"><abbr title="App\Lib\Agora\AccessToken::is_nonempty_string">is_nonempty_string</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Policies/UserPolicy.php.html#10"><abbr title="App\Policies\UserPolicy::update">update</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Policies/UserPolicy.php.html#15"><abbr title="App\Policies\UserPolicy::delete">delete</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Services/BaseService.php.html#33"><abbr title="App\Services\BaseService::getById">getById</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Http/Controllers/Auth/AuthController.php.html#36"><abbr title="App\Http\Controllers\Auth\AuthController::refresh">refresh</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Controllers/Auth/AuthController.php.html#58"><abbr title="App\Http\Controllers\Auth\AuthController::loginWithGoogle">loginWithGoogle</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Controllers/UserController.php.html#25"><abbr title="App\Http\Controllers\UserController::index">index</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Controllers/UserController.php.html#54"><abbr title="App\Http\Controllers\UserController::show">show</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Middleware/Authenticate.php.html#13"><abbr title="App\Http\Middleware\Authenticate::redirectTo">redirectTo</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Requests/StoreActivityLogRequest.php.html#22"><abbr title="App\Http\Requests\StoreActivityLogRequest::prepareForValidation">prepareForValidation</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Resources/UserResource.php.html#26"><abbr title="App\Http\Resources\UserResource::toAttributes">toAttributes</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Lib/Agora/AccessToken.php.html#30"><abbr title="App\Lib\Agora\Message::packContent">packContent</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Lib/Agora/AccessToken.php.html#43"><abbr title="App\Lib\Agora\Message::unpackContent">unpackContent</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Lib/Agora/AccessToken.php.html#92"><abbr title="App\Lib\Agora\AccessToken::setUid">setUid</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Lib/Agora/AccessToken.php.html#131"><abbr title="App\Lib\Agora\AccessToken::initWithToken">initWithToken</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Mail/AssessmentPublished.php.html#23"><abbr title="App\Mail\AssessmentPublished::build">build</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Models/User.php.html#126"><abbr title="App\Models\User::scopeVerified">scopeVerified</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Services/ActivityLogService.php.html#25"><abbr title="App\Services\ActivityLogService::applyFiltersAndSorts">applyFiltersAndSorts</abbr></a></td><td class="text-right">4</td></tr>
+       <tr><td><a href="Services/BaseService.php.html#50"><abbr title="App\Services\BaseService::findOne">findOne</abbr></a></td><td class="text-right">3</td></tr>
+       <tr><td><a href="Services/BaseService.php.html#67"><abbr title="App\Services\BaseService::findOneOrFail">findOneOrFail</abbr></a></td><td class="text-right">3</td></tr>
+       <tr><td><a href="Providers/AppServiceProvider.php.html#21"><abbr title="App\Providers\AppServiceProvider::boot">boot</abbr></a></td><td class="text-right">2</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <footer>
+    <hr/>
+    <p>
+     <small>Generated by <a href="https://github.com/sebastianbergmann/php-code-coverage" target="_top">php-code-coverage 10.1.9</a> using <a href="https://www.php.net/" target="_top">PHP 8.2.12</a> and <a href="https://phpunit.de/">PHPUnit 10.5.2</a> at Sun Mar 10 20:04:36 UTC 2024.</small>
+    </p>
+   </footer>
+  </div>
+  <script src="_js/jquery.min.js?v=10.1.9" type="text/javascript"></script>
+  <script src="_js/d3.min.js?v=10.1.9" type="text/javascript"></script>
+  <script src="_js/nv.d3.min.js?v=10.1.9" type="text/javascript"></script>
+  <script type="text/javascript">
+$(document).ready(function() {
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#classCoverageDistribution svg')
+      .datum(getCoverageDistributionData([35,0,0,0,1,0,1,3,3,2,2,25], "Class Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#methodCoverageDistribution svg')
+      .datum(getCoverageDistributionData([109,0,0,1,0,0,2,3,1,0,3,54], "Method Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getCoverageDistributionData(data, label) {
+    var labels = [
+      '0%',
+      '0-10%',
+      '10-20%',
+      '20-30%',
+      '30-40%',
+      '40-50%',
+      '50-60%',
+      '60-70%',
+      '70-80%',
+      '80-90%',
+      '90-100%',
+      '100%'
+    ];
+    var values = [];
+    $.each(labels, function(key) {
+      values.push({x: labels[key], y: data[key]});
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Cyclomatic Complexity');
+
+    d3.select('#classComplexity svg')
+      .datum(getComplexityData([[66.66666666666666,2,"<a href=\"Console\/Kernel.php.html#8\">App\\Console\\Kernel<\/a>"],[100,0,"<a href=\"Enums\/ActivityAction.php.html#9\">App\\Enums\\ActivityAction<\/a>"],[100,0,"<a href=\"Enums\/LinkAccessType.php.html#9\">App\\Enums\\LinkAccessType<\/a>"],[100,0,"<a href=\"Enums\/PaginationSetting.php.html#9\">App\\Enums\\PaginationSetting<\/a>"],[100,0,"<a href=\"Enums\/UserRole.php.html#9\">App\\Enums\\UserRole<\/a>"],[100,2,"<a href=\"Events\/ActivityLogCreatedEvent.php.html#12\">App\\Events\\ActivityLogCreatedEvent<\/a>"],[66.66666666666666,1,"<a href=\"Exceptions\/Handler.php.html#10\">App\\Exceptions\\Handler<\/a>"],[0,5,"<a href=\"Http\/Controllers\/ActivityLogController.php.html#9\">App\\Http\\Controllers\\ActivityLogController<\/a>"],[0,1,"<a href=\"Http\/Controllers\/AgoraTokenController.php.html#8\">App\\Http\\Controllers\\AgoraTokenController<\/a>"],[0,6,"<a href=\"Http\/Controllers\/Auth\/AuthController.php.html#13\">App\\Http\\Controllers\\Auth\\AuthController<\/a>"],[0,6,"<a href=\"Http\/Controllers\/Controller.php.html#11\">App\\Http\\Controllers\\Controller<\/a>"],[0,8,"<a href=\"Http\/Controllers\/MeetingController.php.html#14\">App\\Http\\Controllers\\MeetingController<\/a>"],[0,9,"<a href=\"Http\/Controllers\/ScreenshotController.php.html#10\">App\\Http\\Controllers\\ScreenshotController<\/a>"],[0,2,"<a href=\"Http\/Controllers\/UploadController.php.html#10\">App\\Http\\Controllers\\UploadController<\/a>"],[0,9,"<a href=\"Http\/Controllers\/UserController.php.html#13\">App\\Http\\Controllers\\UserController<\/a>"],[100,0,"<a href=\"Http\/Kernel.php.html#7\">App\\Http\\Kernel<\/a>"],[0,2,"<a href=\"Http\/Middleware\/Authenticate.php.html#8\">App\\Http\\Middleware\\Authenticate<\/a>"],[100,0,"<a href=\"Http\/Middleware\/EncryptCookies.php.html#7\">App\\Http\\Middleware\\EncryptCookies<\/a>"],[100,0,"<a href=\"Http\/Middleware\/PreventRequestsDuringMaintenance.php.html#7\">App\\Http\\Middleware\\PreventRequestsDuringMaintenance<\/a>"],[0,4,"<a href=\"Http\/Middleware\/RedirectIfAuthenticated.php.html#11\">App\\Http\\Middleware\\RedirectIfAuthenticated<\/a>"],[0,3,"<a href=\"Http\/Middleware\/RoleChecker.php.html#9\">App\\Http\\Middleware\\RoleChecker<\/a>"],[100,0,"<a href=\"Http\/Middleware\/TrimStrings.php.html#7\">App\\Http\\Middleware\\TrimStrings<\/a>"],[0,1,"<a href=\"Http\/Middleware\/TrustHosts.php.html#7\">App\\Http\\Middleware\\TrustHosts<\/a>"],[100,0,"<a href=\"Http\/Middleware\/TrustProxies.php.html#8\">App\\Http\\Middleware\\TrustProxies<\/a>"],[100,0,"<a href=\"Http\/Middleware\/ValidateSignature.php.html#7\">App\\Http\\Middleware\\ValidateSignature<\/a>"],[100,0,"<a href=\"Http\/Middleware\/VerifyCsrfToken.php.html#7\">App\\Http\\Middleware\\VerifyCsrfToken<\/a>"],[0,1,"<a href=\"Http\/Requests\/ApiFormRequest.php.html#10\">App\\Http\\Requests\\ApiFormRequest<\/a>"],[0,2,"<a href=\"Http\/Requests\/LoginGoogleRequest.php.html#7\">App\\Http\\Requests\\LoginGoogleRequest<\/a>"],[0,2,"<a href=\"Http\/Requests\/RefreshTokenRequest.php.html#7\">app\\Http\\Requests\\RefreshTokenRequest<\/a>"],[0,2,"<a href=\"Http\/Requests\/SendSignalRequest.php.html#7\">App\\Http\\Requests\\SendSignalRequest<\/a>"],[0,4,"<a href=\"Http\/Requests\/StoreActivityLogRequest.php.html#9\">App\\Http\\Requests\\StoreActivityLogRequest<\/a>"],[0,3,"<a href=\"Http\/Requests\/StoreMeetingRequest.php.html#9\">App\\Http\\Requests\\StoreMeetingRequest<\/a>"],[0,2,"<a href=\"Http\/Requests\/StoreScreenshotRequest.php.html#7\">App\\Http\\Requests\\StoreScreenshotRequest<\/a>"],[0,3,"<a href=\"Http\/Requests\/StoreUserRequest.php.html#9\">App\\Http\\Requests\\StoreUserRequest<\/a>"],[0,3,"<a href=\"Http\/Requests\/UpdateMeetingRequest.php.html#9\">App\\Http\\Requests\\UpdateMeetingRequest<\/a>"],[0,3,"<a href=\"Http\/Requests\/UpdateUserRequest.php.html#10\">App\\Http\\Requests\\UpdateUserRequest<\/a>"],[0,5,"<a href=\"Http\/Resources\/MeetingResource.php.html#11\">App\\Http\\Resources\\MeetingResource<\/a>"],[0,1,"<a href=\"Http\/Resources\/MeetingScreenshotResource.php.html#8\">App\\Http\\Resources\\MeetingScreenshotResource<\/a>"],[90.9090909090909,2,"<a href=\"Http\/Resources\/UserActivityLogResource.php.html#9\">App\\Http\\Resources\\UserActivityLogResource<\/a>"],[100,2,"<a href=\"Http\/Resources\/UserMeetingResource.php.html#8\">App\\Http\\Resources\\UserMeetingResource<\/a>"],[0,2,"<a href=\"Http\/Resources\/UserResource.php.html#10\">App\\Http\\Resources\\UserResource<\/a>"],[0,1,"<a href=\"Http\/Resources\/UserScreenshotDetailResource.php.html#8\">App\\Http\\Resources\\UserScreenshotDetailResource<\/a>"],[0,1,"<a href=\"Http\/Resources\/UserScreenshotResource.php.html#8\">App\\Http\\Resources\\UserScreenshotResource<\/a>"],[100,3,"<a href=\"Jobs\/UploadImageToS3.php.html#12\">App\\Jobs\\UploadImageToS3<\/a>"],[0,5,"<a href=\"Lib\/Agora\/AccessToken.php.html#9\">App\\Lib\\Agora\\Message<\/a>"],[0,19,"<a href=\"Lib\/Agora\/AccessToken.php.html#67\">App\\Lib\\Agora\\AccessToken<\/a>"],[0,5,"<a href=\"Lib\/Agora\/RtcTokenBuilder.php.html#7\">App\\Lib\\Agora\\RtcTokenBuilder<\/a>"],[0,3,"<a href=\"Mail\/AssessmentPublished.php.html#12\">App\\Mail\\AssessmentPublished<\/a>"],[100,2,"<a href=\"Models\/ActivityLog.php.html#10\">App\\Models\\ActivityLog<\/a>"],[0,2,"<a href=\"Models\/LinkAccess.php.html#9\">App\\Models\\LinkAccess<\/a>"],[100,2,"<a href=\"Models\/LinkSetting.php.html#10\">App\\Models\\LinkSetting<\/a>"],[75,4,"<a href=\"Models\/Meeting.php.html#13\">App\\Models\\Meeting<\/a>"],[100,2,"<a href=\"Models\/Screenshot.php.html#9\">App\\Models\\Screenshot<\/a>"],[35.714285714285715,15,"<a href=\"Models\/User.php.html#16\">App\\Models\\User<\/a>"],[0,1,"<a href=\"Notifications\/ResetPasswordQueued.php.html#10\">App\\Notifications\\ResetPasswordQueued<\/a>"],[100,0,"<a href=\"Notifications\/VerifyEmailQueued.php.html#9\">App\\Notifications\\VerifyEmailQueued<\/a>"],[0,6,"<a href=\"Policies\/UserPolicy.php.html#8\">App\\Policies\\UserPolicy<\/a>"],[66.66666666666666,3,"<a href=\"Providers\/AppServiceProvider.php.html#8\">App\\Providers\\AppServiceProvider<\/a>"],[75,1,"<a href=\"Providers\/AuthServiceProvider.php.html#10\">App\\Providers\\AuthServiceProvider<\/a>"],[0,1,"<a href=\"Providers\/BroadcastServiceProvider.php.html#8\">App\\Providers\\BroadcastServiceProvider<\/a>"],[100,2,"<a href=\"Providers\/EventServiceProvider.php.html#10\">App\\Providers\\EventServiceProvider<\/a>"],[90,2,"<a href=\"Providers\/RouteServiceProvider.php.html#11\">App\\Providers\\RouteServiceProvider<\/a>"],[76.92307692307693,8,"<a href=\"Services\/ActivityLogService.php.html#15\">App\\Services\\ActivityLogService<\/a>"],[100,6,"<a href=\"Services\/AuthService.php.html#8\">App\\Services\\AuthService<\/a>"],[54.65116279069767,34,"<a href=\"Services\/BaseService.php.html#14\">App\\Services\\BaseService<\/a>"],[100,1,"<a href=\"Services\/LinkAccessService.php.html#9\">App\\Services\\LinkAccessService<\/a>"],[100,1,"<a href=\"Services\/LinkService.php.html#9\">App\\Services\\LinkService<\/a>"],[100,31,"<a href=\"Services\/MeetingService.php.html#19\">App\\Services\\MeetingService<\/a>"],[89.47368421052632,9,"<a href=\"Services\/ScreenshotService.php.html#10\">App\\Services\\ScreenshotService<\/a>"],[100,1,"<a href=\"Services\/UploadService.php.html#9\">App\\Services\\UploadService<\/a>"],[100,5,"<a href=\"Services\/UserService.php.html#12\">App\\Services\\UserService<\/a>"],[83.33333333333334,3,"<a href=\"Traits\/HasCreatedBy.php.html#8\">App\\Traits\\HasCreatedBy<\/a>"]], 'Class Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Method Complexity');
+
+    d3.select('#methodComplexity svg')
+      .datum(getComplexityData([[0,1,"<a href=\"Console\/Kernel.php.html#13\">App\\Console\\Kernel::schedule<\/a>"],[100,1,"<a href=\"Console\/Kernel.php.html#21\">App\\Console\\Kernel::commands<\/a>"],[100,1,"<a href=\"Events\/ActivityLogCreatedEvent.php.html#24\">App\\Events\\ActivityLogCreatedEvent::__construct<\/a>"],[100,1,"<a href=\"Events\/ActivityLogCreatedEvent.php.html#37\">App\\Events\\ActivityLogCreatedEvent::broadcastOn<\/a>"],[66.66666666666666,1,"<a href=\"Exceptions\/Handler.php.html#26\">App\\Exceptions\\Handler::register<\/a>"],[0,1,"<a href=\"Http\/Controllers\/ActivityLogController.php.html#13\">App\\Http\\Controllers\\ActivityLogController::__construct<\/a>"],[0,1,"<a href=\"Http\/Controllers\/ActivityLogController.php.html#18\">App\\Http\\Controllers\\ActivityLogController::store<\/a>"],[0,1,"<a href=\"Http\/Controllers\/ActivityLogController.php.html#30\">App\\Http\\Controllers\\ActivityLogController::getStaffActivityLog<\/a>"],[0,1,"<a href=\"Http\/Controllers\/ActivityLogController.php.html#37\">App\\Http\\Controllers\\ActivityLogController::getStaffMeetingActivityLog<\/a>"],[0,1,"<a href=\"Http\/Controllers\/ActivityLogController.php.html#44\">App\\Http\\Controllers\\ActivityLogController::getMeetingActivityLog<\/a>"],[0,1,"<a href=\"Http\/Controllers\/AgoraTokenController.php.html#10\">App\\Http\\Controllers\\AgoraTokenController::generateToken<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Auth\/AuthController.php.html#19\">App\\Http\\Controllers\\Auth\\AuthController::__construct<\/a>"],[0,1,"<a href=\"Http\/Controllers\/Auth\/AuthController.php.html#28\">App\\Http\\Controllers\\Auth\\AuthController::me<\/a>"],[0,2,"<a href=\"Http\/Controllers\/Auth\/AuthController.php.html#36\">App\\Http\\Controllers\\Auth\\AuthController::refresh<\/a>"],[0,2,"<a href=\"Http\/Controllers\/Auth\/AuthController.php.html#58\">App\\Http\\Controllers\\Auth\\AuthController::loginWithGoogle<\/a>"],[0,6,"<a href=\"Http\/Controllers\/Controller.php.html#15\">App\\Http\\Controllers\\Controller::sendResponse<\/a>"],[0,1,"<a href=\"Http\/Controllers\/MeetingController.php.html#18\">App\\Http\\Controllers\\MeetingController::__construct<\/a>"],[0,1,"<a href=\"Http\/Controllers\/MeetingController.php.html#26\">App\\Http\\Controllers\\MeetingController::index<\/a>"],[0,1,"<a href=\"Http\/Controllers\/MeetingController.php.html#33\">App\\Http\\Controllers\\MeetingController::join<\/a>"],[0,1,"<a href=\"Http\/Controllers\/MeetingController.php.html#38\">App\\Http\\Controllers\\MeetingController::leave<\/a>"],[0,1,"<a href=\"Http\/Controllers\/MeetingController.php.html#47\">App\\Http\\Controllers\\MeetingController::show<\/a>"],[0,1,"<a href=\"Http\/Controllers\/MeetingController.php.html#54\">App\\Http\\Controllers\\MeetingController::store<\/a>"],[0,1,"<a href=\"Http\/Controllers\/MeetingController.php.html#62\">App\\Http\\Controllers\\MeetingController::showByHash<\/a>"],[0,1,"<a href=\"Http\/Controllers\/MeetingController.php.html#72\">App\\Http\\Controllers\\MeetingController::update<\/a>"],[0,1,"<a href=\"Http\/Controllers\/ScreenshotController.php.html#14\">App\\Http\\Controllers\\ScreenshotController::__construct<\/a>"],[0,1,"<a href=\"Http\/Controllers\/ScreenshotController.php.html#22\">App\\Http\\Controllers\\ScreenshotController::getStaffScreenshot<\/a>"],[0,1,"<a href=\"Http\/Controllers\/ScreenshotController.php.html#27\">App\\Http\\Controllers\\ScreenshotController::getStaffScreenshotDetail<\/a>"],[0,1,"<a href=\"Http\/Controllers\/ScreenshotController.php.html#32\">App\\Http\\Controllers\\ScreenshotController::getMeetingScreenshot<\/a>"],[0,1,"<a href=\"Http\/Controllers\/ScreenshotController.php.html#37\">App\\Http\\Controllers\\ScreenshotController::getMeetingScreenshotDetail<\/a>"],[0,1,"<a href=\"Http\/Controllers\/ScreenshotController.php.html#45\">App\\Http\\Controllers\\ScreenshotController::store<\/a>"],[0,1,"<a href=\"Http\/Controllers\/ScreenshotController.php.html#60\">App\\Http\\Controllers\\ScreenshotController::show<\/a>"],[0,1,"<a href=\"Http\/Controllers\/ScreenshotController.php.html#68\">App\\Http\\Controllers\\ScreenshotController::update<\/a>"],[0,1,"<a href=\"Http\/Controllers\/ScreenshotController.php.html#76\">App\\Http\\Controllers\\ScreenshotController::destroy<\/a>"],[0,1,"<a href=\"Http\/Controllers\/UploadController.php.html#14\">App\\Http\\Controllers\\UploadController::__construct<\/a>"],[0,1,"<a href=\"Http\/Controllers\/UploadController.php.html#19\">App\\Http\\Controllers\\UploadController::upload<\/a>"],[0,1,"<a href=\"Http\/Controllers\/UserController.php.html#17\">App\\Http\\Controllers\\UserController::__construct<\/a>"],[0,2,"<a href=\"Http\/Controllers\/UserController.php.html#25\">App\\Http\\Controllers\\UserController::index<\/a>"],[0,1,"<a href=\"Http\/Controllers\/UserController.php.html#40\">App\\Http\\Controllers\\UserController::store<\/a>"],[0,2,"<a href=\"Http\/Controllers\/UserController.php.html#54\">App\\Http\\Controllers\\UserController::show<\/a>"],[0,1,"<a href=\"Http\/Controllers\/UserController.php.html#69\">App\\Http\\Controllers\\UserController::update<\/a>"],[0,1,"<a href=\"Http\/Controllers\/UserController.php.html#81\">App\\Http\\Controllers\\UserController::destroy<\/a>"],[0,1,"<a href=\"Http\/Controllers\/UserController.php.html#90\">App\\Http\\Controllers\\UserController::me<\/a>"],[0,2,"<a href=\"Http\/Middleware\/Authenticate.php.html#13\">App\\Http\\Middleware\\Authenticate::redirectTo<\/a>"],[0,4,"<a href=\"Http\/Middleware\/RedirectIfAuthenticated.php.html#18\">App\\Http\\Middleware\\RedirectIfAuthenticated::handle<\/a>"],[0,3,"<a href=\"Http\/Middleware\/RoleChecker.php.html#16\">App\\Http\\Middleware\\RoleChecker::handle<\/a>"],[0,1,"<a href=\"Http\/Middleware\/TrustHosts.php.html#14\">App\\Http\\Middleware\\TrustHosts::hosts<\/a>"],[0,1,"<a href=\"Http\/Requests\/ApiFormRequest.php.html#12\">App\\Http\\Requests\\ApiFormRequest::failedValidation<\/a>"],[0,1,"<a href=\"Http\/Requests\/LoginGoogleRequest.php.html#12\">App\\Http\\Requests\\LoginGoogleRequest::authorize<\/a>"],[0,1,"<a href=\"Http\/Requests\/LoginGoogleRequest.php.html#22\">App\\Http\\Requests\\LoginGoogleRequest::rules<\/a>"],[0,1,"<a href=\"Http\/Requests\/RefreshTokenRequest.php.html#12\">app\\Http\\Requests\\RefreshTokenRequest::authorize<\/a>"],[0,1,"<a href=\"Http\/Requests\/RefreshTokenRequest.php.html#22\">app\\Http\\Requests\\RefreshTokenRequest::rules<\/a>"],[0,1,"<a href=\"Http\/Requests\/SendSignalRequest.php.html#12\">App\\Http\\Requests\\SendSignalRequest::authorize<\/a>"],[0,1,"<a href=\"Http\/Requests\/SendSignalRequest.php.html#22\">App\\Http\\Requests\\SendSignalRequest::rules<\/a>"],[0,1,"<a href=\"Http\/Requests\/StoreActivityLogRequest.php.html#14\">App\\Http\\Requests\\StoreActivityLogRequest::authorize<\/a>"],[0,2,"<a href=\"Http\/Requests\/StoreActivityLogRequest.php.html#22\">App\\Http\\Requests\\StoreActivityLogRequest::prepareForValidation<\/a>"],[0,1,"<a href=\"Http\/Requests\/StoreActivityLogRequest.php.html#36\">App\\Http\\Requests\\StoreActivityLogRequest::rules<\/a>"],[0,1,"<a href=\"Http\/Requests\/StoreMeetingRequest.php.html#14\">App\\Http\\Requests\\StoreMeetingRequest::authorize<\/a>"],[0,1,"<a href=\"Http\/Requests\/StoreMeetingRequest.php.html#22\">App\\Http\\Requests\\StoreMeetingRequest::prepareForValidation<\/a>"],[0,1,"<a href=\"Http\/Requests\/StoreMeetingRequest.php.html#34\">App\\Http\\Requests\\StoreMeetingRequest::rules<\/a>"],[0,1,"<a href=\"Http\/Requests\/StoreScreenshotRequest.php.html#12\">App\\Http\\Requests\\StoreScreenshotRequest::authorize<\/a>"],[0,1,"<a href=\"Http\/Requests\/StoreScreenshotRequest.php.html#22\">App\\Http\\Requests\\StoreScreenshotRequest::rules<\/a>"],[0,1,"<a href=\"Http\/Requests\/StoreUserRequest.php.html#14\">App\\Http\\Requests\\StoreUserRequest::authorize<\/a>"],[0,1,"<a href=\"Http\/Requests\/StoreUserRequest.php.html#22\">App\\Http\\Requests\\StoreUserRequest::prepareForValidation<\/a>"],[0,1,"<a href=\"Http\/Requests\/StoreUserRequest.php.html#34\">App\\Http\\Requests\\StoreUserRequest::rules<\/a>"],[0,1,"<a href=\"Http\/Requests\/UpdateMeetingRequest.php.html#14\">App\\Http\\Requests\\UpdateMeetingRequest::authorize<\/a>"],[0,1,"<a href=\"Http\/Requests\/UpdateMeetingRequest.php.html#22\">App\\Http\\Requests\\UpdateMeetingRequest::prepareForValidation<\/a>"],[0,1,"<a href=\"Http\/Requests\/UpdateMeetingRequest.php.html#34\">App\\Http\\Requests\\UpdateMeetingRequest::rules<\/a>"],[0,1,"<a href=\"Http\/Requests\/UpdateUserRequest.php.html#15\">App\\Http\\Requests\\UpdateUserRequest::authorize<\/a>"],[0,1,"<a href=\"Http\/Requests\/UpdateUserRequest.php.html#25\">App\\Http\\Requests\\UpdateUserRequest::prepareForValidation<\/a>"],[0,1,"<a href=\"Http\/Requests\/UpdateUserRequest.php.html#37\">App\\Http\\Requests\\UpdateUserRequest::rules<\/a>"],[0,5,"<a href=\"Http\/Resources\/MeetingResource.php.html#18\">App\\Http\\Resources\\MeetingResource::toAttributes<\/a>"],[0,1,"<a href=\"Http\/Resources\/MeetingScreenshotResource.php.html#18\">App\\Http\\Resources\\MeetingScreenshotResource::toAttributes<\/a>"],[90.9090909090909,2,"<a href=\"Http\/Resources\/UserActivityLogResource.php.html#22\">App\\Http\\Resources\\UserActivityLogResource::toAttributes<\/a>"],[100,2,"<a href=\"Http\/Resources\/UserMeetingResource.php.html#13\">App\\Http\\Resources\\UserMeetingResource::toAttributes<\/a>"],[0,2,"<a href=\"Http\/Resources\/UserResource.php.html#26\">App\\Http\\Resources\\UserResource::toAttributes<\/a>"],[0,1,"<a href=\"Http\/Resources\/UserScreenshotDetailResource.php.html#21\">App\\Http\\Resources\\UserScreenshotDetailResource::toAttributes<\/a>"],[0,1,"<a href=\"Http\/Resources\/UserScreenshotResource.php.html#19\">App\\Http\\Resources\\UserScreenshotResource::toAttributes<\/a>"],[100,1,"<a href=\"Jobs\/UploadImageToS3.php.html#23\">App\\Jobs\\UploadImageToS3::__construct<\/a>"],[100,2,"<a href=\"Jobs\/UploadImageToS3.php.html#31\">App\\Jobs\\UploadImageToS3::handle<\/a>"],[0,1,"<a href=\"Lib\/Agora\/AccessToken.php.html#20\">App\\Lib\\Agora\\Message::__construct<\/a>"],[0,2,"<a href=\"Lib\/Agora\/AccessToken.php.html#30\">App\\Lib\\Agora\\Message::packContent<\/a>"],[0,2,"<a href=\"Lib\/Agora\/AccessToken.php.html#43\">App\\Lib\\Agora\\Message::unpackContent<\/a>"],[0,1,"<a href=\"Lib\/Agora\/AccessToken.php.html#87\">App\\Lib\\Agora\\AccessToken::__construct<\/a>"],[0,2,"<a href=\"Lib\/Agora\/AccessToken.php.html#92\">App\\Lib\\Agora\\AccessToken::setUid<\/a>"],[0,3,"<a href=\"Lib\/Agora\/AccessToken.php.html#101\">App\\Lib\\Agora\\AccessToken::is_nonempty_string<\/a>"],[0,4,"<a href=\"Lib\/Agora\/AccessToken.php.html#111\">App\\Lib\\Agora\\AccessToken::init<\/a>"],[0,2,"<a href=\"Lib\/Agora\/AccessToken.php.html#131\">App\\Lib\\Agora\\AccessToken::initWithToken<\/a>"],[0,1,"<a href=\"Lib\/Agora\/AccessToken.php.html#141\">App\\Lib\\Agora\\AccessToken::addPrivilege<\/a>"],[0,5,"<a href=\"Lib\/Agora\/AccessToken.php.html#148\">App\\Lib\\Agora\\AccessToken::extract<\/a>"],[0,1,"<a href=\"Lib\/Agora\/AccessToken.php.html#194\">App\\Lib\\Agora\\AccessToken::build<\/a>"],[0,1,"<a href=\"Lib\/Agora\/RtcTokenBuilder.php.html#31\">App\\Lib\\Agora\\RtcTokenBuilder::buildTokenWithUid<\/a>"],[0,4,"<a href=\"Lib\/Agora\/RtcTokenBuilder.php.html#48\">App\\Lib\\Agora\\RtcTokenBuilder::buildTokenWithUserAccount<\/a>"],[0,1,"<a href=\"Mail\/AssessmentPublished.php.html#18\">App\\Mail\\AssessmentPublished::__construct<\/a>"],[0,2,"<a href=\"Mail\/AssessmentPublished.php.html#23\">App\\Mail\\AssessmentPublished::build<\/a>"],[100,1,"<a href=\"Models\/ActivityLog.php.html#24\">App\\Models\\ActivityLog::user<\/a>"],[100,1,"<a href=\"Models\/ActivityLog.php.html#29\">App\\Models\\ActivityLog::meeting<\/a>"],[0,1,"<a href=\"Models\/LinkAccess.php.html#19\">App\\Models\\LinkAccess::linkSetting<\/a>"],[0,1,"<a href=\"Models\/LinkAccess.php.html#24\">App\\Models\\LinkAccess::user<\/a>"],[100,1,"<a href=\"Models\/LinkSetting.php.html#23\">App\\Models\\LinkSetting::meeting<\/a>"],[100,1,"<a href=\"Models\/LinkSetting.php.html#28\">App\\Models\\LinkSetting::accesses<\/a>"],[100,1,"<a href=\"Models\/Meeting.php.html#39\">App\\Models\\Meeting::users<\/a>"],[100,1,"<a href=\"Models\/Meeting.php.html#44\">App\\Models\\Meeting::linkSetting<\/a>"],[100,1,"<a href=\"Models\/Meeting.php.html#49\">App\\Models\\Meeting::screenshots<\/a>"],[0,1,"<a href=\"Models\/Meeting.php.html#54\">App\\Models\\Meeting::activityLogs<\/a>"],[100,1,"<a href=\"Models\/Screenshot.php.html#23\">App\\Models\\Screenshot::user<\/a>"],[100,1,"<a href=\"Models\/Screenshot.php.html#28\">App\\Models\\Screenshot::meeting<\/a>"],[100,1,"<a href=\"Models\/User.php.html#58\">App\\Models\\User::getJWTIdentifier<\/a>"],[100,1,"<a href=\"Models\/User.php.html#66\">App\\Models\\User::getJWTCustomClaims<\/a>"],[0,1,"<a href=\"Models\/User.php.html#71\">App\\Models\\User::hasAnyRole<\/a>"],[0,1,"<a href=\"Models\/User.php.html#76\">App\\Models\\User::isAdmin<\/a>"],[0,1,"<a href=\"Models\/User.php.html#84\">App\\Models\\User::sendEmailVerificationNotification<\/a>"],[0,1,"<a href=\"Models\/User.php.html#94\">App\\Models\\User::sendPasswordResetNotification<\/a>"],[0,1,"<a href=\"Models\/User.php.html#100\">App\\Models\\User::meetings<\/a>"],[100,1,"<a href=\"Models\/User.php.html#105\">App\\Models\\User::screenshots<\/a>"],[0,1,"<a href=\"Models\/User.php.html#110\">App\\Models\\User::activityLogs<\/a>"],[0,1,"<a href=\"Models\/User.php.html#116\">App\\Models\\User::scopeEmail<\/a>"],[0,1,"<a href=\"Models\/User.php.html#121\">App\\Models\\User::scopeName<\/a>"],[0,2,"<a href=\"Models\/User.php.html#126\">App\\Models\\User::scopeVerified<\/a>"],[100,1,"<a href=\"Models\/User.php.html#131\">App\\Models\\User::scopeRememberToken<\/a>"],[100,1,"<a href=\"Models\/User.php.html#136\">App\\Models\\User::scopeRole<\/a>"],[0,1,"<a href=\"Notifications\/ResetPasswordQueued.php.html#14\">App\\Notifications\\ResetPasswordQueued::toMail<\/a>"],[0,3,"<a href=\"Policies\/UserPolicy.php.html#10\">App\\Policies\\UserPolicy::update<\/a>"],[0,3,"<a href=\"Policies\/UserPolicy.php.html#15\">App\\Policies\\UserPolicy::delete<\/a>"],[100,1,"<a href=\"Providers\/AppServiceProvider.php.html#13\">App\\Providers\\AppServiceProvider::register<\/a>"],[50,2,"<a href=\"Providers\/AppServiceProvider.php.html#21\">App\\Providers\\AppServiceProvider::boot<\/a>"],[75,1,"<a href=\"Providers\/AuthServiceProvider.php.html#24\">App\\Providers\\AuthServiceProvider::boot<\/a>"],[0,1,"<a href=\"Providers\/BroadcastServiceProvider.php.html#13\">App\\Providers\\BroadcastServiceProvider::boot<\/a>"],[100,1,"<a href=\"Providers\/EventServiceProvider.php.html#26\">App\\Providers\\EventServiceProvider::boot<\/a>"],[100,1,"<a href=\"Providers\/EventServiceProvider.php.html#34\">App\\Providers\\EventServiceProvider::shouldDiscoverEvents<\/a>"],[90,2,"<a href=\"Providers\/RouteServiceProvider.php.html#25\">App\\Providers\\RouteServiceProvider::boot<\/a>"],[100,1,"<a href=\"Services\/ActivityLogService.php.html#19\">App\\Services\\ActivityLogService::__construct<\/a>"],[50,3,"<a href=\"Services\/ActivityLogService.php.html#25\">App\\Services\\ActivityLogService::applyFiltersAndSorts<\/a>"],[100,1,"<a href=\"Services\/ActivityLogService.php.html#51\">App\\Services\\ActivityLogService::getStaffActivityLog<\/a>"],[100,1,"<a href=\"Services\/ActivityLogService.php.html#62\">App\\Services\\ActivityLogService::getStaffMeetingActivityLog<\/a>"],[100,1,"<a href=\"Services\/ActivityLogService.php.html#73\">App\\Services\\ActivityLogService::getMeetingActivityLog<\/a>"],[100,1,"<a href=\"Services\/ActivityLogService.php.html#81\">App\\Services\\ActivityLogService::create<\/a>"],[100,1,"<a href=\"Services\/AuthService.php.html#12\">App\\Services\\AuthService::__construct<\/a>"],[100,1,"<a href=\"Services\/AuthService.php.html#17\">App\\Services\\AuthService::loginWithGoogle<\/a>"],[100,2,"<a href=\"Services\/AuthService.php.html#32\">App\\Services\\AuthService::refreshToken<\/a>"],[100,1,"<a href=\"Services\/AuthService.php.html#52\">App\\Services\\AuthService::getUserInfoFromGoogle<\/a>"],[100,1,"<a href=\"Services\/AuthService.php.html#61\">App\\Services\\AuthService::loginAndReturnToken<\/a>"],[100,1,"<a href=\"Services\/BaseService.php.html#18\">App\\Services\\BaseService::create<\/a>"],[100,1,"<a href=\"Services\/BaseService.php.html#23\">App\\Services\\BaseService::update<\/a>"],[0,1,"<a href=\"Services\/BaseService.php.html#28\">App\\Services\\BaseService::delete<\/a>"],[0,3,"<a href=\"Services\/BaseService.php.html#33\">App\\Services\\BaseService::getById<\/a>"],[62.5,3,"<a href=\"Services\/BaseService.php.html#50\">App\\Services\\BaseService::findOne<\/a>"],[62.5,3,"<a href=\"Services\/BaseService.php.html#67\">App\\Services\\BaseService::findOneOrFail<\/a>"],[100,1,"<a href=\"Services\/BaseService.php.html#84\">App\\Services\\BaseService::firstOrCreate<\/a>"],[0,1,"<a href=\"Services\/BaseService.php.html#89\">App\\Services\\BaseService::getModel<\/a>"],[93.54838709677419,9,"<a href=\"Services\/BaseService.php.html#97\">App\\Services\\BaseService::getList<\/a>"],[26.31578947368421,7,"<a href=\"Services\/BaseService.php.html#150\">App\\Services\\BaseService::addSearchParam<\/a>"],[0,4,"<a href=\"Services\/BaseService.php.html#181\">App\\Services\\BaseService::applySearchType<\/a>"],[100,1,"<a href=\"Services\/LinkAccessService.php.html#11\">App\\Services\\LinkAccessService::__construct<\/a>"],[100,1,"<a href=\"Services\/LinkService.php.html#11\">App\\Services\\LinkService::__construct<\/a>"],[100,1,"<a href=\"Services\/MeetingService.php.html#25\">App\\Services\\MeetingService::__construct<\/a>"],[100,7,"<a href=\"Services\/MeetingService.php.html#32\">App\\Services\\MeetingService::join<\/a>"],[100,1,"<a href=\"Services\/MeetingService.php.html#65\">App\\Services\\MeetingService::getMeetingScreenshot<\/a>"],[100,5,"<a href=\"Services\/MeetingService.php.html#75\">App\\Services\\MeetingService::create<\/a>"],[100,1,"<a href=\"Services\/MeetingService.php.html#111\">App\\Services\\MeetingService::showByHash<\/a>"],[100,5,"<a href=\"Services\/MeetingService.php.html#124\">App\\Services\\MeetingService::getList<\/a>"],[100,11,"<a href=\"Services\/MeetingService.php.html#150\">App\\Services\\MeetingService::updateMeeting<\/a>"],[100,1,"<a href=\"Services\/ScreenshotService.php.html#16\">App\\Services\\ScreenshotService::__construct<\/a>"],[0,1,"<a href=\"Services\/ScreenshotService.php.html#23\">App\\Services\\ScreenshotService::getStaffScreenshot<\/a>"],[100,3,"<a href=\"Services\/ScreenshotService.php.html#28\">App\\Services\\ScreenshotService::getStaffScreenshotDetail<\/a>"],[0,1,"<a href=\"Services\/ScreenshotService.php.html#42\">App\\Services\\ScreenshotService::getMeetingScreenshot<\/a>"],[100,3,"<a href=\"Services\/ScreenshotService.php.html#47\">App\\Services\\ScreenshotService::getMeetingScreenshotDetail<\/a>"],[100,1,"<a href=\"Services\/UploadService.php.html#11\">App\\Services\\UploadService::uploadToS3<\/a>"],[100,1,"<a href=\"Services\/UserService.php.html#14\">App\\Services\\UserService::__construct<\/a>"],[100,1,"<a href=\"Services\/UserService.php.html#19\">App\\Services\\UserService::findByRememberToken<\/a>"],[100,1,"<a href=\"Services\/UserService.php.html#24\">App\\Services\\UserService::getStaffScreenshot<\/a>"],[100,2,"<a href=\"Services\/UserService.php.html#32\">App\\Services\\UserService::getList<\/a>"],[100,2,"<a href=\"Traits\/HasCreatedBy.php.html#10\">App\\Traits\\HasCreatedBy::bootHasCreatedBy<\/a>"],[0,1,"<a href=\"Traits\/HasCreatedBy.php.html#20\">App\\Traits\\HasCreatedBy::createdBy<\/a>"]], 'Method Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getComplexityData(data, label) {
+    var values = [];
+    $.each(data, function(key) {
+      var value = Math.round(data[key][0]*100) / 100;
+      values.push({
+        x: value,
+        y: data[key][1],
+        class: data[key][2],
+        size: 0.05,
+        shape: 'diamond'
+      });
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+});
+  </script>
+ </body>
+</html>

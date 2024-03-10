@@ -5,92 +5,85 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Enums\ActivityAction;
+use App\Events\ActivityLogCreatedEvent;
 use App\Http\Resources\UserActivityLogResource;
 use App\Models\ActivityLog;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Http\Request;
+use ReflectionException;
 
 class ActivityLogService extends BaseService
 {
-    public function __construct(ActivityLog $activityLog)
+    protected Request $request;
+
+    public function __construct(ActivityLog $activityLog, Request $request)
     {
         $this->model = $activityLog;
-
+        $this->request = $request;
     }
 
+    private function applyFiltersAndSorts(Builder $query, array $conditions = []): Builder
+    {
+        foreach ($conditions as $column => $value) {
+            $query->where($column, $value);
+        }
+
+        // Apply filters from request
+        if ($this->request->has('filters')) {
+            $filters = $this->request->get('filters');
+            $query->when($filters['startedAt'] ?? null, fn($query) => $query->whereDate('created_at', '>=', $filters['startedAt']))
+                ->when($filters['endedAt'] ?? null, fn($query) => $query->whereDate('created_at', '<=', $filters['endedAt']))
+                ->when($filters['action'] ?? null, fn($query) => $query->where('action', ActivityAction::getValue($filters['action'])));
+        }
+
+        // Apply sorting from request
+        $this->request->whenHas('sort', function ($sort) use ($query) {
+            $sortParts = explode(':', $sort);
+            $query->orderBy($sortParts[0], $sortParts[1] ?? 'asc');
+        });
+
+        return $query;
+    }
+
+    /**
+     * @throws ReflectionException
+     */
     public function getStaffActivityLog(string $userId): array
     {
-        $query = $this->model->query();
-        $query->where('user_id', $userId);
-        if (request()->has('filters')) {
-            $filters = request()->get('filters');
-            if (isset($filters['startedAt'])) {
-                $query->whereDate('created_at', '>=', $filters['startedAt']);
-            }
-            if (isset($filters['endedAt'])) {
-                $query->whereDate('created_at', '<=', $filters['endedAt']);
-            }
-            if (isset($filters['action'])) {
-                $query->where('action', ActivityAction::getValue($filters['action']));
-            }
-        }
+        $query = $this->model->newQuery();
+        $query = $this->applyFiltersAndSorts($query, ['user_id' => $userId]);
 
-        if (request()->has('sort')) {
-            $sort = explode(':', request()->get('sort'));
-            $query->orderBy($sort[0], $sort[1]);
-        }
-
-        return $this->getList(UserActivityLogResource::class, request()->all(), $query, ['user', 'meeting']);
+        return $this->getList(UserActivityLogResource::class, $this->request->all(), $query, ['user', 'meeting']);
     }
 
+    /**
+     * @throws ReflectionException
+     */
     public function getStaffMeetingActivityLog(string $staffId, string $meetingId): array
     {
-        $query = $this->model->query();
-        $query->where('user_id', $staffId);
-        $query->where('meeting_id', $meetingId);
+        $query = $this->model->newQuery();
+        $query = $this->applyFiltersAndSorts($query, ['user_id' => $staffId, 'meeting_id' => $meetingId]);
 
-        if (request()->has('filters')) {
-            $filters = request()->get('filters');
-            if (isset($filters['startedAt'])) {
-                $query->whereDate('created_at', '>=', $filters['startedAt']);
-            }
-            if (isset($filters['endedAt'])) {
-                $query->whereDate('created_at', '<=', $filters['endedAt']);
-            }
-            if (isset($filters['action'])) {
-                $query->where('action', ActivityAction::getValue($filters['action']));
-            }
-        }
-
-        if (request()->has('sort')) {
-            $sort = explode(':', request()->get('sort'));
-            $query->orderBy($sort[0], $sort[1]);
-        }
-
-        return $this->getList(UserActivityLogResource::class, request()->all(), $query, ['user', 'meeting']);
+        return $this->getList(UserActivityLogResource::class, $this->request->all(), $query, ['user', 'meeting']);
     }
 
+    /**
+     * @throws ReflectionException
+     */
     public function getMeetingActivityLog(string $meetingId): array
     {
-        $query = $this->model->query();
-        $query->where('meeting_id', $meetingId);
+        $query = $this->model->newQuery();
+        $query = $this->applyFiltersAndSorts($query, ['meeting_id' => $meetingId]);
 
-        if (request()->has('filters')) {
-            $filters = request()->get('filters');
-            if (isset($filters['startedAt'])) {
-                $query->whereDate('created_at', '>=', $filters['startedAt']);
-            }
-            if (isset($filters['endedAt'])) {
-                $query->whereDate('created_at', '<=', $filters['endedAt']);
-            }
-            if (isset($filters['action'])) {
-                $query->where('action', ActivityAction::getValue($filters['action']));
-            }
-        }
+        return $this->getList(UserActivityLogResource::class, $this->request->all(), $query, ['user', 'meeting']);
+    }
 
-        if (request()->has('sort')) {
-            $sort = explode(':', request()->get('sort'));
-            $query->orderBy($sort[0], $sort[1]);
-        }
+    public function create(array $data): object
+    {
+        $log = $this->model->create($data);
 
-        return $this->getList(UserActivityLogResource::class, request()->all(), $query, ['user', 'meeting']);
+        event(new ActivityLogCreatedEvent(new UserActivityLogResource($log), (int)$log->user_id, (int)$log->meeting_id, $log->user->name));
+
+        return $log;
     }
 }

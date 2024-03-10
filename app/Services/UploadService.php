@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace App\Services;
 
-use Illuminate\Support\Facades\Storage;
+use App\Jobs\UploadImageToS3;
 
 class UploadService
 {
     public function uploadToS3(string $imageUrl): string
     {
-        $fileName = $this->getFileName($imageUrl);
+        $fileName = basename($imageUrl);
 
-        Storage::disk('s3')->put($fileName, file_get_contents($imageUrl), 'public');
+        UploadImageToS3::dispatch($imageUrl, $fileName);
 
         return $fileName;
     }

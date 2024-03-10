@@ -8,9 +8,13 @@ use App\Enums\LinkAccessType;
 use App\Http\Resources\MeetingScreenshotResource;
 use App\Http\Resources\UserMeetingResource;
 use App\Models\Meeting;
+use Exception;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
+use ReflectionException;
 
 class MeetingService extends BaseService
 {
@@ -57,6 +61,7 @@ class MeetingService extends BaseService
         return response()->json(new UserMeetingResource($meeting));
     }
 
+
     public function getMeetingScreenshot(): array
     {
         $query = $this->model->query();
@@ -64,6 +69,9 @@ class MeetingService extends BaseService
         return $this->getList(MeetingScreenshotResource::class, request()->all(), $query, ['screenshots']);
     }
 
+    /**
+     * @throws Exception
+     */
     public function create(array $data): object
     {
         DB::beginTransaction();
@@ -76,7 +84,7 @@ class MeetingService extends BaseService
 
             $linkSetting = $meeting->linkSetting()->create([
                 'access_type' => $data['accessType']->value,
-                'is_enabled' => true,
+                'is_enabled' => $data['linkEnabled'] ?? true,
                 'start_date' => $data['startDate'] ?? null,
                 'end_date' => $data['endDate'] ?? null,
                 'hash' => substr(md5($meeting->id . microtime()), 0, 12),
@@ -92,7 +100,7 @@ class MeetingService extends BaseService
             }
 
             DB::commit();
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             DB::rollBack();
             throw $e;
         }
@@ -108,6 +116,11 @@ class MeetingService extends BaseService
         return $linkSetting->meeting;
     }
 
+    /**
+     * @throws NotFoundExceptionInterface
+     * @throws ReflectionException
+     * @throws ContainerExceptionInterface
+     */
     public function getList(?string $resourceClass = null, array $input = [], ?Builder $query = null, array $relations = []): array
     {
         $query = $this->model->query();
@@ -131,6 +144,9 @@ class MeetingService extends BaseService
         return parent::getList($resourceClass, $input, $query, $relations);
     }
 
+    /**
+     * @throws Exception
+     */
     public function updateMeeting(Meeting $meeting, array $data): void
     {
         DB::beginTransaction();
@@ -175,14 +191,16 @@ class MeetingService extends BaseService
                 $linkSettingData['end_date'] = $data['endDate'];
             }
 
-            $linkSetting->update($linkSettingData);
+            if (isset($linkSettingData)) {
+                $linkSetting->update($linkSettingData);
+            }
 
             // Prepare meeting updates
             $meetingData = collect($data)->only(['title', 'startDate', 'endDate'])->filter()->all();
             $meeting->update($meetingData);
 
             DB::commit();
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             DB::rollBack();
             throw $e;
         }
