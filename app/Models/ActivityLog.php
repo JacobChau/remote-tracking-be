@@ -17,7 +17,7 @@ class ActivityLog extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'action', 'user_id', 'meeting_id',
+        'action', 'user_id', 'meeting_id', 'screenshot_id'
     ];
 
     // ------------------ Relationships ------------------
@@ -29,5 +29,10 @@ class ActivityLog extends Model
     public function meeting(): BelongsTo
     {
         return $this->belongsTo(Meeting::class);
+    }
+
+    public function screenshot(): BelongsTo
+    {
+        return $this->belongsTo(Screenshot::class);
     }
 }

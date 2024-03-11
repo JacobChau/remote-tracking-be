@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\DetectFaceRequest;
 use App\Http\Requests\StoreScreenshotRequest;
+use App\Services\ActivityLogService;
 use App\Services\ScreenshotService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -54,27 +56,12 @@ class ScreenshotController extends Controller
         return $this->sendResponse($response, 'Screenshot created successfully');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function detectFace(DetectFaceRequest $request): JsonResponse
     {
-        //
-    }
+        $data = $request->validated();
+        $this->screenShotService->detectFace($data);
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        return $this->sendResponse([], 'Face detected successfully');
     }
 }

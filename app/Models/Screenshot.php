@@ -29,4 +29,9 @@ class Screenshot extends Model
     {
         return $this->belongsTo(Meeting::class);
     }
+
+    public function activityLog(): BelongsTo
+    {
+        return $this->belongsTo(ActivityLog::class);
+    }
 }

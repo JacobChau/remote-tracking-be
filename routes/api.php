@@ -36,6 +36,11 @@ Route::middleware('api')->group(function () {
         });
     });
 
+    // UPLOAD ROUTES
+    Route::prefix('upload')->name('upload.')->controller(UploadController::class)->group(function () {
+        Route::post('/', 'upload')->name('upload');
+    });
+
     Route::prefix('activity-logs')->name('activity-logs.')->controller(ActivityLogController::class)->group(function () {
         Route::post('/', 'store')->name('store');
     });
@@ -47,11 +52,6 @@ Route::middleware(['api', 'role:'.UserRole::ADMIN])->group(function () {
         Route::post('/', 'store')->name('store');
         Route::put('/{user}', 'update')->name('update');
         Route::delete('/{user}', 'destroy')->name('destroy');
-    });
-
-    // UPLOAD ROUTES
-    Route::prefix('upload')->name('upload.')->controller(UploadController::class)->group(function () {
-        Route::post('/', 'upload')->name('upload');
     });
 
     // MEETING ROUTES
@@ -104,6 +104,7 @@ Route::middleware(['api', 'auth'])->group(function () {
     // Screenshot routes
     Route::prefix('screenshots')->name('screenshots.')->controller(ScreenshotController::class)->group(function () {
         Route::post('/', 'store')->name('store');
+        Route::post('/face-detection', 'detectFace')->name('detectFace');
 
     });
 });

@@ -16,6 +16,7 @@ class UserActivityLogResource extends JsonApiResource
         'userEmail',
         'meetingId',
         'meetingTitle',
+        'faceScreenshotUrl',
         'createdAt',
     ];
 
@@ -26,6 +27,17 @@ class UserActivityLogResource extends JsonApiResource
             $action = $action->key;
         } else {
             $action = ActivityAction::getKey($action);
+        }
+
+        if ($action === ActivityAction::getKey(ActivityAction::NO_FACE_DETECTED)) {
+            return [
+                'action' => $action,
+                'userEmail' => $this->user->email,
+                'meetingId' => $this->meeting->id,
+                'meetingTitle' => $this->meeting->title,
+                'faceScreenshotUrl' => $this->screenshot->image_key,
+                'createdAt' => $this->created_at->format('Y-m-d H:i:s'),
+            ];
         }
 
         return [
