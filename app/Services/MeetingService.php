@@ -7,11 +7,13 @@ namespace App\Services;
 use App\Enums\LinkAccessType;
 use App\Http\Resources\MeetingScreenshotResource;
 use App\Http\Resources\UserMeetingResource;
+use App\Mail\MeetingInvited;
 use App\Models\Meeting;
 use Exception;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use ReflectionException;
@@ -19,14 +21,15 @@ use ReflectionException;
 class MeetingService extends BaseService
 {
     protected LinkService $linkService;
-
+    protected UserService $userService;
     protected LinkAccessService $linkAccessService;
 
-    public function __construct(Meeting $meeting, LinkService $linkService, LinkAccessService $linkAccessService)
+    public function __construct(Meeting $meeting, LinkService $linkService, LinkAccessService $linkAccessService, UserService $userService)
     {
         $this->model = $meeting;
         $this->linkService = $linkService;
         $this->linkAccessService = $linkAccessService;
+        $this->userService = $userService;
     }
 
     public function join(string $hash): JsonResponse
@@ -172,6 +175,8 @@ class MeetingService extends BaseService
                 if (! empty($participantIdsToRemove)) {
                     $linkSetting->accesses()->whereIn('user_id', $participantIdsToRemove)->delete();
                 }
+
+                $meeting->users()->sync($newParticipantIds);
             }
 
             if (isset($data['linkEnabled'])) {
@@ -203,5 +208,22 @@ class MeetingService extends BaseService
             DB::rollBack();
             throw $e;
         }
+    }
+
+    public function invite(Meeting $meeting, array $emails): void
+    {
+        foreach ($emails as $email) {
+            $linkSetting = $meeting->linkSetting()->first();
+            $user = $this->userService->findOne(['email' => $email]);
+            $meeting->users()->syncWithoutDetaching($user->id);
+            $linkAccess = $this->linkAccessService->findOne(['link_id' => $linkSetting->id, 'user_id' => $user->id]);
+            if (! $linkAccess) {
+                $linkSetting->accesses()->create([
+                    'user_id' => $user->id,
+                    'is_allowed' => true,
+                ]);
+            }
+        }
+        Mail::to($emails)->send(new MeetingInvited($meeting));
     }
 }

@@ -37,6 +37,17 @@ class UserService extends BaseService
             $query->orWhere('email', 'like', '%'.$input['searchKeyword'].'%');
         }
 
+//        http://localhost:8000/api/users?searchKeyword=Ch%C3%A2u+Jacob&filters[notInMeeting]=30
+
+        if (isset($input['filters'])) {
+            $filters = $input['filters'];
+            if (isset($filters['notInMeeting'])) {
+                $query->whereDoesntHave('meetings', function ($query) use ($filters) {
+                    $query->where('meeting_id', $filters['notInMeeting']);
+                });
+            }
+        }
+
         return parent::getList($resourceClass, $input, $query, $relations);
     }
 }

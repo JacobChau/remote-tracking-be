@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\MeetingEvent;
+use App\Http\Requests\InviteMeetingRequest;
 use App\Http\Requests\StoreMeetingRequest;
 use App\Http\Requests\UpdateMeetingRequest;
 use App\Http\Resources\MeetingResource;
 use App\Models\Meeting;
 use App\Services\MeetingService;
+use Exception;
 use Illuminate\Http\JsonResponse;
 use ReflectionException;
 
@@ -20,9 +21,7 @@ class MeetingController extends Controller
         $this->meetingService = $meetingService;
     }
 
-    /**
-     * @throws ReflectionException
-     */
+
     public function index(): JsonResponse
     {
         $meetings = $this->meetingService->getList(MeetingResource::class, request()->all());
@@ -33,15 +32,6 @@ class MeetingController extends Controller
     public function join(string $hash): JsonResponse
     {
         return $this->meetingService->join($hash);
-    }
-
-    public function leave(string $meetingId): JsonResponse
-    {
-        $staffId = auth()->user()->id ?? 1;
-
-        broadcast(new MeetingEvent($meetingId, $staffId, 'left'))->toOthers();
-
-        return $this->sendResponse('You have left the meeting');
     }
 
     public function show(string $meetingId): JsonResponse
@@ -67,7 +57,7 @@ class MeetingController extends Controller
     }
 
     /**
-     * @throws \Exception
+     * @throws Exception
      */
     public function update(Meeting $meeting, UpdateMeetingRequest $request): JsonResponse
     {
@@ -75,5 +65,13 @@ class MeetingController extends Controller
         $this->meetingService->updateMeeting($meeting, $data);
 
         return $this->sendResponse('Meeting updated successfully');
+    }
+
+    public function invite(Meeting $meeting, InviteMeetingRequest $request): JsonResponse
+    {
+        $data = $request->validated();
+        $this->meetingService->invite($meeting, $data['emails']);
+
+        return $this->sendResponse('Invitation sent successfully');
     }
 }

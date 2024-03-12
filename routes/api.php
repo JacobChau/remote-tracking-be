@@ -61,6 +61,8 @@ Route::middleware(['api', 'role:'.UserRole::ADMIN])->group(function () {
         Route::post('/', 'store')->name('store');
         Route::put('/{meeting}', 'update')->name('update');
         Route::delete('/{meeting}', 'destroy')->name('destroy');
+        Route::post('/{meeting}/invite', 'invite')->name('invite');
+
     });
 
     Route::prefix('activity-logs')->name('activity-logs.')->controller(ActivityLogController::class)->group(function () {
@@ -98,7 +100,6 @@ Route::middleware(['api', 'auth'])->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/{meeting}', 'show')->name('show');
         Route::get('/join/{hash}', 'join')->name('join');
-        Route::post('/{meeting}/leave', 'leave')->name('leave');
     });
 
     // Screenshot routes
