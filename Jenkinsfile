@@ -28,10 +28,10 @@ pipeline {
                          env.ECR_REPO_APP = "remote-tracking-be"
                          env.PORTAINER_STACK_ID = "47"
                          break
-                      case 'feat/cicd':
-                         env.ECR_REPO_APP = "remote-tracking-be"
-                         env.PORTAINER_STACK_ID = "47"
-                         break
+                    //   case 'feat/cicd':
+                    //      env.ECR_REPO_APP = "remote-tracking-be"
+                    //      env.PORTAINER_STACK_ID = "47"
+                    //      break
                    }
                 }
             }
@@ -40,7 +40,7 @@ pipeline {
             when {
                 anyOf {
                     branch 'main'
-                    branch 'feat/cicd'
+                    // branch 'feat/cicd'
                 }
             }
             steps {
@@ -58,7 +58,7 @@ pipeline {
             when {
                 anyOf {
                     branch 'main'
-                    branch 'feat/cicd'
+                    // branch 'feat/cicd'
                 }
             }
             steps {
