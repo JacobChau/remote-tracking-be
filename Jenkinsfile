@@ -64,7 +64,7 @@ pipeline {
             steps {
                 script {
                     try {
-                        sh "python3 deploy/deploy.py ${env.PORTAINER_API_URL} ${env.PORTAINER_ACCESS_TOKEN} ${env.PORTAINER_API_ENDPOINT} ${env.PORTAINER_STACK_ID} ${env.SHORT_COMMIT}"
+                        sh "python3 deploy/portainer_deploy.py ${env.PORTAINER_API_URL} ${env.PORTAINER_ACCESS_TOKEN} ${env.PORTAINER_API_ENDPOINT} ${env.PORTAINER_STACK_ID} ${env.SHORT_COMMIT}"
                     } catch (Exception e) {
                         echo "Caught exception: ${e}"
                         currentBuild.result = 'FAILURE'
