@@ -1,20 +1,42 @@
-FROM richarvey/nginx-php-fpm:3.1.6
+FROM composer:latest as composer-build
+
+RUN apk update \
+    && apk add \
+    libxml2-dev \
+    php-soap \
+    && rm -rf /var/cache/apk/*
+
+RUN docker-php-ext-install \
+    bcmath \
+    exif \
+    soap
+
+WORKDIR /app
+
+COPY composer.json composer.json
+COPY composer.lock composer.lock
+RUN composer install --prefer-dist --no-scripts --no-dev --no-autoloader && rm -rf /root/.composer
+COPY . /app
+RUN composer dump-autoload --no-scripts --no-dev --optimize
+
+FROM php
+
+RUN apt-get update && apt-get install -y \
+    libpq-dev \
+    && docker-php-ext-install pdo pdo_pgsql
+
+WORKDIR /var/www/html
 
 COPY . .
 
-# Image config
-ENV SKIP_COMPOSER 1
-ENV WEBROOT /var/www/html/public
-ENV PHP_ERRORS_STDERR 1
-ENV RUN_SCRIPTS 1
-ENV REAL_IP_HEADER 1
+COPY --from=composer-build /app/vendor/ /var/www/html/vendor/
 
-# Laravel config
-ENV APP_ENV production
-ENV APP_DEBUG false
-ENV LOG_CHANNEL stderr
+RUN chown -R www-data:www-data \
+    /var/www/html/storage \
+    /var/www/html/bootstrap/cache
 
-# Allow composer to run as root
-ENV COMPOSER_ALLOW_SUPERUSER 1
+RUN chmod +x docker/entrypoint.sh
 
-CMD ["/start.sh"]
+ENTRYPOINT [ "docker/entrypoint.sh" ]
+
+CMD php artisan serve --host=0.0.0.0 --port=8000
